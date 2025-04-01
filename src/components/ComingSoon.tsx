@@ -9,7 +9,7 @@ const ComingSoon: React.FC = () => {
 
         <h1 className={styles.heading}>
           A Ride in Memory of Nathan Park<br />
-          Lake District<br />
+          The Lake District<br />
           September 2025
         </h1>
 
