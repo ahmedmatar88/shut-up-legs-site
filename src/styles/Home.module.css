@@ -8,19 +8,16 @@ html, body, #root {
   
   /* Main full-page layout */
   .hero {
-    position: relative;
-    background-image: url('/rocacorba.jpeg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    background-attachment: scroll;
     min-height: 100vh;
-    width: 100vw;
-  
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: url('/rocacorba.jpeg') no-repeat center center;
+    background-size: cover;
+    background-attachment: scroll;
   }
+  
   
   /* Dark overlay */
   .overlay {
