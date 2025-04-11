@@ -1,9 +1,9 @@
-
+// src/App.tsx
 import React from 'react';
-import ComingSoon from './components/ComingSoon';
+import Home from './components/Home';
 
 const App: React.FC = () => {
-  return <ComingSoon />;
+  return <Home />;
 };
 
 export default App;
