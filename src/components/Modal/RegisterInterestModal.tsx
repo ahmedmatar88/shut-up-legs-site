@@ -8,21 +8,28 @@ interface Props {
 
 const RegisterInterestModal: React.FC<Props> = ({ onClose }) => {
   const [formState, setFormState] = useState({ name: '', email: '', updates: false });
-
+  const [isSubmitting, setIsSubmitting] = useState(false); 
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true); // <-- Show loading
+  
     try {
       await fetch("https://bozlkipogj.execute-api.eu-north-1.amazonaws.com/register-interest", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formState)
       });
+  
       alert("Thanks for registering!");
       onClose();
     } catch (err) {
       alert("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false); // <-- Reset state
     }
   };
+  
 
   return (
     <div className={styles.backdrop}>
@@ -53,7 +60,9 @@ const RegisterInterestModal: React.FC<Props> = ({ onClose }) => {
     />
     <span>I’d like to receive updates about the event and registration details.</span>
   </label>
-  <button type="submit">Count me in</button>
+  <button type="submit" disabled={isSubmitting}>
+  {isSubmitting ? 'Submitting...' : 'Count me in'}
+</button>
 </form>
       </div>
     </div>
