@@ -18,6 +18,13 @@ const Home: React.FC = () => {
         </h1>
 
         <div className={styles.buttonGroup}>
+          
+                  <button
+          className={styles.button}
+          onClick={() => window.location.href = '/course'}
+        >
+          View the Routes
+        </button>
           <button className={styles.button} onClick={() => setShowModal(true)}>Register Interest</button>
           <a className={styles.button} href="https://www.justgiving.com/page/joanne-simmonett-1732654861856" target="_blank" rel="noopener noreferrer">
             Donate to Charity

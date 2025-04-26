@@ -1,0 +1,149 @@
+/* Main full-page layout */
+ .hero {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('/rocacorba.jpeg') no-repeat center center;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+
+/* Dark overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Content container */
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+  max-width: 700px;
+  width: 100%;
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  color: #FFD700;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+
+.route {
+  margin-bottom: 4rem;
+}
+
+.route h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.route p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.route iframe {
+  border: 2px solid #FFD700;
+  border-radius: 8px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.routeLinks {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.routeLinks a {
+  font-weight: bold;
+  color: #FFD700;
+  text-decoration: none;
+}
+
+.routeLinks a:hover {
+  text-decoration: underline;
+}
+
+.backButtonContainer {
+  margin-top: 3rem;
+}
+
+.button {
+  background-color: #FFD700;
+  color: #000;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #e6c200;
+}
+
+.stravaBadge {
+  margin-top: 2rem;
+  text-align: center;
+  animation: fadeInBadge 2s ease-out;
+}
+
+.stravaBadge img {
+  width: 120px;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.stravaBadge img:hover {
+  opacity: 1;
+}
+
+@keyframes fadeInBadge {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.embedContainer {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.embedContainer .strava-embed-placeholder {
+  max-width: 100%;
+}
