@@ -6,7 +6,7 @@ interface Props {
   onClose: () => void;
 }
 
-const SITE_KEY = '6Lf1TiUrAAAAACSQbD6ZPxqLOAJSmut74VB1AQgl';
+const SITE_KEY = '6Lf1TiUrAAAAACSQbD6ZPxqL0AJSmut74VB1AQgl';
 
 const RegisterInterestModal: React.FC<Props> = ({ onClose }) => {
   const [formState, setFormState] = useState({ name: '', email: '', updates: false });
