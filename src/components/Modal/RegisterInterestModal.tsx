@@ -1,21 +1,22 @@
-// src/components/Modal/RegisterInterestModal.tsx
 import React, { useState } from 'react';
-import HCaptcha from 'react-hcaptcha';
+import ReCAPTCHA from 'react-google-recaptcha';
 import styles from '../../styles/Modal.module.css';
 
 interface Props {
   onClose: () => void;
 }
 
+const SITE_KEY = '6Lf1TiUrAAAAACSQbD6ZPxqLOAJSmut74VB1AQgl';
+
 const RegisterInterestModal: React.FC<Props> = ({ onClose }) => {
   const [formState, setFormState] = useState({ name: '', email: '', updates: false });
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [captchaToken, setCaptchaToken] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!captchaToken) {
-      alert("Please complete the CAPTCHA.");
+      alert("Please complete the reCAPTCHA.");
       return;
     }
 
@@ -27,8 +28,8 @@ const RegisterInterestModal: React.FC<Props> = ({ onClose }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formState,
-          "h-captcha-response": captchaToken,
-          website: '' // Honeypot field (should be empty)
+          "g-recaptcha-response": captchaToken,
+          website: ''
         })
       });
 
@@ -74,7 +75,6 @@ const RegisterInterestModal: React.FC<Props> = ({ onClose }) => {
             <span>I’d like to receive updates about the event and registration details.</span>
           </label>
 
-          {/* Honeypot Field (bots will fill this, humans won't see it) */}
           <input
             type="text"
             name="website"
@@ -83,13 +83,12 @@ const RegisterInterestModal: React.FC<Props> = ({ onClose }) => {
             autoComplete="off"
           />
 
-          {/* hCaptcha Component */}
-          <HCaptcha
-            sitekey="92681f08-0d2a-411e-8a4c-88dce6acaeb2"
-            onVerify={setCaptchaToken}
+          <ReCAPTCHA
+            sitekey={SITE_KEY}
+            onChange={setCaptchaToken}
           />
 
-          <button type="submit" disabled={isSubmitting}>
+          <button type="submit" disabled={isSubmitting || !captchaToken}>
             {isSubmitting ? 'Submitting...' : 'Count me in'}
           </button>
         </form>
