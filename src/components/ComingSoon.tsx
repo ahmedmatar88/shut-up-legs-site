@@ -8,7 +8,7 @@ const ComingSoon: React.FC = () => {
         <img src="/shut-up-legs.png" alt="Shut Up LEGS Logo" className={styles.logo} />
 
         <h1 className={styles.heading}>
-          A Ride in Memory of Nathan Park<br />
+          A Ride in Memory of <span style={{ whiteSpace: "nowrap" }}>Nathan&nbsp;Park</span><br />
           The Lake District<br />
           September 2025
         </h1>
