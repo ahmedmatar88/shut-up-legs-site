@@ -1,23 +1,30 @@
-/* Main full-page layout */
- .hero {
+.hero {
   min-height: 100vh;
   width: 100%;
   display: flex;
+  flex-direction: column; /* 👈 add this */
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* 👈 update this */
   background: url('/rocacorba.jpeg') no-repeat center center;
   background-size: cover;
   background-attachment: scroll;
+  padding-top: 2rem; /* optional: gives breathing room */
+  padding-bottom: 2rem; /* optional */
 }
-
 
 /* Dark overlay */
 .overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1;
+  pointer-events: none; /* 👈 IMPORTANT! */
 }
+
 
 /* Content container */
 .content {
@@ -146,4 +153,32 @@
 
 .embedContainer .strava-embed-placeholder {
   max-width: 100%;
+  width: 100%;         /* 👈 add this line */
+}
+
+.responsive-iframe {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+.responsive-iframe iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.fadeIn {
+  opacity: 0;
+  animation: fadeInEmbed 1.5s ease forwards;
+}
+
+@keyframes fadeInEmbed {
+  to {
+    opacity: 1;
+  }
 }

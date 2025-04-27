@@ -28,16 +28,18 @@ const Course: React.FC = () => {
           <h2>Short Route</h2>
           <p><strong>Distance:</strong> 8.25 miles | <strong>Elevation Gain:</strong> 434 feet</p>
           <p><strong>Estimated Time:</strong> ~2 hours depending on pace.</p>
-          <p>A scenic, rolling ride through the Lakes – perfect for intermediate cyclists.</p>
+          <p>A scenic and relaxed ride through the beautiful Lake District — perfect for beginners and intermediate cyclists alike.</p>
 
           <div className={styles.embedContainer}>
-            <div
-              className="strava-embed-placeholder"
-              data-embed-type="route"
-              data-embed-id="3341174526037101836"
-              data-style="standard"
-              data-slippy="true"
-            ></div>
+            <div className="responsive-iframe">
+              <div
+                className="strava-embed-placeholder fadeIn"
+                data-embed-type="route"
+                data-embed-id="3341174526037101836"
+                data-style="standard"
+                data-slippy="true"
+              ></div>
+            </div>
           </div>
 
           <div className={styles.routeLinks}>
@@ -58,13 +60,15 @@ const Course: React.FC = () => {
           <p>The full Shut Up LEGS experience — expect challenging climbs and epic views.</p>
 
           <div className={styles.embedContainer}>
-            <div
-              className="strava-embed-placeholder"
-              data-embed-type="route"
-              data-embed-id="3335363735599423332"
-              data-style="standard"
-              data-slippy="true"
-            ></div>
+            <div className="responsive-iframe">
+              <div
+                className="strava-embed-placeholder fadeIn"
+                data-embed-type="route"
+                data-embed-id="3335363735599423332"
+                data-style="standard"
+                data-slippy="true"
+              ></div>
+            </div>
           </div>
 
           <div className={styles.routeLinks}>
