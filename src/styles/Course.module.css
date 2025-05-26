@@ -7,7 +7,7 @@
   justify-content: flex-start; /* 👈 update this */
   background: url('/rocacorba.jpeg') no-repeat center center;
   background-size: cover;
-  background-attachment: scroll;
+  background-attachment: fixed;
   padding-top: 2rem; /* optional: gives breathing room */
   padding-bottom: 2rem; /* optional */
 }

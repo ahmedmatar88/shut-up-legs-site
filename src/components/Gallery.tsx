@@ -1,5 +1,9 @@
 import React from 'react';
-import styles from '../styles/Home.module.css';
 export default function Gallery() {
-  return <div className={styles.page}><div className={styles.overlay}><h1 className={styles.heading}>Gallery Coming Soon</h1></div></div>;
+  return (
+    <main style={{ padding: '2rem', color: '#fff' }}>
+      <h1>Gallery</h1>
+      <p>Photos and memories from past rides will go here.</p>
+    </main>
+  );
 }
