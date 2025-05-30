@@ -14,7 +14,7 @@ const Home: React.FC = () => {
         <h1 className={styles.heading}>
           A Ride in Memory of&nbsp;<span style={{ whiteSpace: 'nowrap' }}>Nathan Park</span><br />
           The Lake District<br />
-          September 2025
+          6th September 2025
         </h1>
 
         <div className={styles.buttonGroup}>
