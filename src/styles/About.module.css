@@ -1,19 +1,18 @@
 /* src/styles/About.module.css */
 
 .hero {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    background: url('/rocacorba.jpeg') no-repeat center center;
-    background-size: cover;
-    background-attachment: fixed;
-    position: relative;
-    padding-top: 5rem;
-    padding-bottom: 2rem;
-  }
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+}
+
   
   .overlay {
     position: absolute;
@@ -127,4 +126,16 @@
     font-style: italic;
     color: #aaa;
   }
-  
+
+  .bg {
+    background: url('/rocacorba.jpeg') center center / cover no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 0;
+    pointer-events: none;
+    transform: translateZ(0); /* Helps with iOS repainting issues */
+  }
+   

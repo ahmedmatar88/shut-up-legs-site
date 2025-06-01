@@ -38,6 +38,7 @@ const About: React.FC = () => {
 
   return (
     <main className={styles.hero}>
+     <div className={styles.bg} /> 
       <div className={styles.overlay} />
       <div className={styles.content}>
         <h1 className={styles.heading}>In Memory of Nathan Park</h1>
