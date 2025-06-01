@@ -20,6 +20,17 @@ const slides = [
   { src: '/gallery/photo9.jpg' },
   { src: '/gallery/photo10.jpg' },
   { src: '/gallery/photo11.jpg' },
+  { src: '/gallery/photo12.jpeg' },
+  { src: '/gallery/photo13.jpeg' },
+  { src: '/gallery/photo14.jpeg' },
+  { src: '/gallery/photo15.jpeg' },
+  { src: '/gallery/photo16.jpeg' },
+  { src: '/gallery/photo17.jpeg' },
+  { src: '/gallery/photo18.jpeg' },
+  { src: '/gallery/photo19.jpeg' },
+  { src: '/gallery/photo20.jpeg' },
+  { src: '/gallery/photo21.jpeg' },
+  { src: '/gallery/photo22.jpeg' },
 ];
 
 const About: React.FC = () => {
