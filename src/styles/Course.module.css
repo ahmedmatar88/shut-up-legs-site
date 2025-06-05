@@ -1,15 +1,29 @@
 .hero {
+  position: relative;
   min-height: 100vh;
   width: 100%;
   display: flex;
-  flex-direction: column; /* 👈 add this */
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* 👈 update this */
+  justify-content: flex-start;
   background: url('/rocacorba.jpeg') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
-  padding-top: 2rem; /* optional: gives breathing room */
-  padding-bottom: 2rem; /* optional */
+  background-position-y: 10px;
+  padding-top: 70px;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    background-attachment: scroll;
+    background-size: auto 100vh;
+    background-position-y: 70px;
+  }
 }
 
 /* Dark overlay */
@@ -19,12 +33,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  min-height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1;
-  pointer-events: none; /* 👈 IMPORTANT! */
+  pointer-events: none;
 }
-
 
 /* Content container */
 .content {
@@ -36,6 +48,16 @@
   max-width: 700px;
   width: 100%;
   animation: fadeIn 1s ease-out;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  backdrop-filter: blur(2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 1.25rem;
+  }
 }
 
 @keyframes fadeIn {
@@ -58,7 +80,13 @@
   margin-bottom: 2rem;
 }
 
+@media (max-width: 480px) {
+  .heading {
+    font-size: 2rem;
+  }
+}
 
+/* ROUTE STYLES */
 .route {
   margin-bottom: 4rem;
 }
@@ -66,11 +94,13 @@
 .route h2 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
+  color: #FFD700;
 }
 
 .route p {
   font-size: 1.2rem;
   margin-bottom: 1rem;
+  color: #ddd;
 }
 
 .route iframe {
@@ -80,6 +110,7 @@
   margin-bottom: 1rem;
 }
 
+/* Route action links */
 .routeLinks {
   margin-top: 1rem;
   display: flex;
@@ -92,14 +123,18 @@
   font-weight: bold;
   color: #FFD700;
   text-decoration: none;
+  font-size: 1rem;
 }
 
 .routeLinks a:hover {
   text-decoration: underline;
 }
 
+/* Button styling */
 .backButtonContainer {
   margin-top: 3rem;
+  display: flex;
+  justify-content: center;
 }
 
 .button {
@@ -112,12 +147,15 @@
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .button:hover {
   background-color: #e6c200;
 }
 
+/* Strava badge */
 .stravaBadge {
   margin-top: 2rem;
   text-align: center;
@@ -145,6 +183,7 @@
   }
 }
 
+/* Iframe wrapper */
 .embedContainer {
   display: flex;
   justify-content: center;
@@ -153,7 +192,7 @@
 
 .embedContainer .strava-embed-placeholder {
   max-width: 100%;
-  width: 100%;         /* 👈 add this line */
+  width: 100%;
 }
 
 .responsive-iframe {

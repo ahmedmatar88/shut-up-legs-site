@@ -1,25 +1,31 @@
 /* src/styles/About.module.css */
 
 .hero {
+  position: relative;
+  padding-top: 70px; /* Push content below fixed navbar */
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 6rem;
-  padding-bottom: 2rem;
-
   background: url('/rocacorba.jpeg') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
+  background-position-y: 10px;
+  box-sizing: border-box;
+  z-index: 0;
 }
 
-/* iOS/Android fallback */
 @media (max-width: 768px) {
   .hero {
     background-attachment: scroll;
+    background-size: auto 100vh; /* Prevent massive zoom on mobile */
+    background-position-y: 70px; /* Align background with navbar offset */
   }
 }
 
@@ -49,6 +55,12 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
+@media (max-width: 480px) {
+  .content {
+    padding: 1.25rem;
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -68,12 +80,24 @@
   text-align: center;
 }
 
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+}
+
 .heading {
   font-size: 2.5rem;
   color: #FFD700;
   font-family: 'Bebas Neue', sans-serif;
   text-transform: uppercase;
   margin-bottom: 1rem;
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 2rem;
+  }
 }
 
 .intro {
@@ -83,11 +107,23 @@
   color: #ccc;
 }
 
+@media (max-width: 480px) {
+  .intro {
+    font-size: 1rem;
+  }
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1rem;
   margin-bottom: 2.5rem;
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .grid img,
@@ -114,6 +150,14 @@
   max-width: 720px;
   margin: 0 auto;
   color: #ddd;
+  padding: 0 1rem;
+}
+
+@media (max-width: 480px) {
+  .story {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
 }
 
 .story h2 {
@@ -125,8 +169,16 @@
   letter-spacing: 0.5px;
 }
 
+@media (max-width: 480px) {
+  .story h2 {
+    font-size: 1.5rem;
+  }
+}
+
 .footer {
   margin-top: 3rem;
   font-style: italic;
   color: #aaa;
+  text-align: center;
+  padding: 1rem;
 }
