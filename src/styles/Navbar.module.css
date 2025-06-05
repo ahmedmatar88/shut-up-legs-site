@@ -1,20 +1,25 @@
 .navbar {
-  position: fixed; /* ✅ ensure it’s fixed */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 70px;
   z-index: 1100;
   background-color: black;
   border-bottom: 1px solid #FFD700;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1.5rem;
+  height: 70px;
   box-sizing: border-box;
+  padding-inline: 1.5rem;
+  overflow: visible;
 }
 
-/* Logo section */
+.navLeft {
+  display: flex;
+  align-items: center;
+}
+
 .navLogo {
   display: flex;
   align-items: center;
@@ -29,7 +34,7 @@
   height: 40px;
 }
 
-/* Desktop links */
+/* Desktop Nav Links */
 .navLinks {
   display: flex;
   gap: 1.5rem;
@@ -64,23 +69,26 @@
   color: #FFD700;
 }
 
-/* Mobile hamburger menu */
+/* Hamburger Toggle Button */
 .menuToggle {
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 6px;
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 1100;
+  z-index: 2000;
+  overflow: visible;
+  transform: translateX(-6px); /* ✅ Pull left from screen edge */
 }
 
 .menuToggle .bar {
-  width: 100%;
+  width: 20px;               /* ✅ Shortened to avoid clipping when rotated */
   height: 3px;
   background: #FFD700;
   transition: all 0.3s ease;
@@ -88,28 +96,32 @@
 }
 
 .menuToggle.open .bar:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
+  transform: rotate(45deg) translateY(6px);
 }
+
 .menuToggle.open .bar:nth-child(2) {
   opacity: 0;
 }
+
 .menuToggle.open .bar:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
+  transform: rotate(-45deg) translateY(-6px);
 }
 
-/* Mobile dropdown menu */
+/* Mobile Menu */
 .mobileMenu {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 70px);
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.95);
+  padding: 2rem 1rem 1.5rem;
   display: none;
   flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.95);
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  padding: 1.5rem 1rem;
-  animation: slideDown 0.3s ease-in-out;
   z-index: 1050;
   gap: 1rem;
+  animation: slideDown 0.3s ease-in-out;
 }
 
 .mobileMenu.open {
@@ -117,10 +129,29 @@
 }
 
 .mobileMenu .navLink {
-  padding: 0.75rem 0;
   font-size: 1.2rem;
+  padding: 0.75rem 0;
+  position: relative;
+  color: #FFD700;
 }
 
+.mobileMenu .navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #FFD700;
+  transition: width 0.3s ease;
+}
+
+.mobileMenu .navLink:hover::after,
+.mobileMenu .navLink.active::after {
+  width: 100%;
+}
+
+/* Backdrop */
 .backdrop {
   position: fixed;
   inset: 0;
@@ -128,6 +159,32 @@
   z-index: 1000;
 }
 
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
+
+  .menuToggle {
+    display: flex;
+  }
+
+  .navRight {
+    display: flex;
+    align-items: center;
+    overflow: visible;
+  }
+
+  .desktopOnly {
+    display: none !important;
+  }
+}
+
+.desktopOnly {
+  display: flex;
+}
+
+/* Slide Animation */
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -136,16 +193,5 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* Responsive tweaks */
-@media (max-width: 768px) {
-  .navLinks {
-    display: none;
-  }
-
-  .menuToggle {
-    display: flex;
   }
 }
