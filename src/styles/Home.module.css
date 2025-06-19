@@ -1,12 +1,4 @@
-html, body, #root {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden;
-  max-width: 100vw;
-}
-
-/* Hero background */
+/* Hero section */
 .hero {
   position: relative;
   min-height: 100vh;
@@ -14,67 +6,109 @@ html, body, #root {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('/rocacorba.jpeg') no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position-y: 10px;
   padding-top: 70px;
   padding-left: 1rem;
   padding-right: 1rem;
   box-sizing: border-box;
-  z-index: 0;
-}
-
-@media (max-width: 768px) {
-  .hero {
-    background-attachment: scroll;
-    background-size: auto 100vh;
-    background-position-y: 70px;
-  }
-}
-
-/* Dark overlay */
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
-/* Content container */
+/* Gradient overlay for depth - adjusted for new background method */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  z-index: 1;
+}
+
+/* Content container with glass morphism - FIXED hover animation */
 .content {
   position: relative;
   z-index: 2;
   text-align: center;
   color: white;
-  padding: 2rem;
+  padding: 3rem 2rem;
   max-width: 900px;
   width: 100%;
-
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 215, 0, 0.1);
+  animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1);
+  /* REMOVED the problematic hover animation that was causing flashing */
 }
 
-/* Logo */
+@media (max-width: 480px) {
+  .content {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+    border-radius: 20px;
+  }
+}
+
+/* Logo with subtle glow - completely fixed hover effects */
 .logo {
   width: 100%;
   max-width: 500px;
-  margin: 0 auto 1.5rem;
+  margin: 0 auto 2rem;
   display: block;
+  filter: drop-shadow(0 4px 12px rgba(255, 215, 0, 0.3));
+  transition: transform 0.3s ease, filter 0.3s ease;
+  will-change: auto;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
-/* Heading */
+.logo:hover {
+  transform: scale(1.02) translateZ(0);
+  filter: drop-shadow(0 6px 16px rgba(255, 215, 0, 0.4));
+}
+
+/* Enhanced heading with gradient text - now matches About page style */
 .heading {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 2.5rem;
-  color: #FFD700;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1.2;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   text-transform: uppercase;
   word-break: break-word;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.heading::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, #FFD700, #FFA500);
+  border-radius: 2px;
 }
 
 @media (min-width: 768px) {
   .heading {
-    font-size: 3rem;
+    font-size: 3.2rem;
+  }
+  
+  .heading::after {
+    width: 150px;
   }
 }
 
@@ -82,30 +116,112 @@ html, body, #root {
   .heading {
     font-size: 2rem;
   }
+  
+  .heading::after {
+    width: 100px;
+  }
 }
 
-/* Buttons */
+/* Button group with enhanced spacing */
 .buttonGroup {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
+/* Enhanced buttons - now styled like course page links */
 .button {
-  background-color: #FFD700;
-  color: black;
-  font-weight: bold;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  cursor: pointer;
+  font-weight: 700;
+  color: #FFD700;
   text-decoration: none;
-  transition: background-color 0.2s ease;
+  font-size: 1.1rem;
+  padding: 0.875rem 1.75rem;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 12px;
+  background: rgba(255, 215, 0, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Bebas Neue', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 180px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+  transition: left 0.5s ease;
 }
 
 .button:hover {
-  background-color: #e6c200;
+  transform: translateY(-3px);
+  background: rgba(255, 215, 0, 0.2);
+  border-color: #FFD700;
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+  color: #FFF;
+}
+
+.button:hover::before {
+  left: 100%;
+}
+
+.button:active {
+  transform: translateY(-1px);
+}
+
+/* Staggered animation for buttons */
+.button:nth-child(1) { animation: buttonSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both; }
+.button:nth-child(2) { animation: buttonSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both; }
+.button:nth-child(3) { animation: buttonSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both; }
+.button:nth-child(4) { animation: buttonSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.5s both; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .buttonGroup {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .button {
+    width: 100%;
+    max-width: 280px;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Animations - cleaned up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes buttonSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
