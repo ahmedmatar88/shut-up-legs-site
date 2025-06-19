@@ -35,8 +35,7 @@
 .navRight {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  margin-left: auto;
+  gap: 1rem;
 }
 
 .navLogo {
@@ -69,7 +68,8 @@
 /* Desktop Nav Links */
 .navLinks {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem;
+  align-items: center;
 }
 
 .navLink {
@@ -122,6 +122,51 @@
 .navLink:hover::after,
 .navLink.active::after {
   width: 80%;
+}
+
+/* Special styling for the Register button */
+.registerButton {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: #000 !important;
+  font-family: 'Bebas Neue', sans-serif;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+  border: 2px solid transparent;
+}
+
+.registerButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.registerButton:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+  background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.registerButton:hover::before {
+  left: 100%;
+}
+
+.registerButton:active {
+  transform: translateY(-1px) scale(1.02);
 }
 
 /* Hamburger Toggle Button */
@@ -215,6 +260,19 @@
 .mobileMenu .navLink:nth-child(3) { animation-delay: 0.2s; }
 .mobileMenu .navLink:nth-child(4) { animation-delay: 0.25s; }
 .mobileMenu .navLink:nth-child(5) { animation-delay: 0.3s; }
+.mobileMenu .navLink:nth-child(6) { animation-delay: 0.35s; }
+
+.mobileMenu .registerButton { 
+  animation-delay: 0.4s; 
+  animation: slideInItem 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+  transform: translateX(-20px);
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  margin: 0.5rem 0;
+  width: calc(100% - 1rem);
+  text-align: center;
+}
 
 .mobileMenu .navLink:hover {
   background: rgba(255, 215, 0, 0.15);
@@ -249,6 +307,14 @@
 
   .desktopOnly {
     display: none !important;
+  }
+
+  .registerButton {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    margin: 0.5rem 0;
+    width: calc(100% - 1rem);
+    text-align: center;
   }
 }
 

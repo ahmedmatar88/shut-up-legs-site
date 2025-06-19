@@ -53,6 +53,15 @@ const MobileNavbar: React.FC = () => {
         </nav>
 
         <div className={styles.navRight}>
+          <a
+            href="https://www.britishcycling.org.uk/events/details/321588/Shut-Up-Legs---A-ride-for-Nathan-Park"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${styles.registerButton} ${styles.desktopOnly}`}
+          >
+            Register for Event
+          </a>
+          
           <button
             className={`${styles.menuToggle} ${menuOpen ? styles.open : ''}`}
             onClick={() => setMenuOpen(!menuOpen)}
@@ -81,6 +90,15 @@ const MobileNavbar: React.FC = () => {
               className={styles.navLink}
             >
               Donate
+            </a>
+            <a
+              href="https://www.britishcycling.org.uk/events/details/321588/Shut-Up-Legs---A-ride-for-Nathan-Park"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.registerButton}
+              onClick={closeMenu}
+            >
+              Register for Event
             </a>
           </nav>
         </>
