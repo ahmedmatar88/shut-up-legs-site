@@ -35,6 +35,13 @@ const Home: React.FC = () => {
 
           <button
             className={styles.button}
+            onClick={() => window.location.href = '/on-the-day'}
+          >
+            On the Day
+          </button>
+
+          <button
+            className={styles.button}
             onClick={() => setShowModal(true)}
           >
             Register Interest

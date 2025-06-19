@@ -39,6 +39,7 @@ const MobileNavbar: React.FC = () => {
         <nav className={`${styles.navLinks} ${styles.desktopOnly}`}>
           <NavLink to="/" label="Home" />
           <NavLink to="/course" label="Ride Routes" />
+          <NavLink to="/on-the-day" label="On the Day" />
           <NavLink to="/gallery" label="Gallery" />
           <NavLink to="/about" label="About Nathan" />
           <a
@@ -70,6 +71,7 @@ const MobileNavbar: React.FC = () => {
           <nav className={`${styles.mobileMenu} ${styles.open}`}>
             <NavLink to="/" label="Home" />
             <NavLink to="/course" label="Ride Routes" />
+            <NavLink to="/on-the-day" label="On the Day" />
             <NavLink to="/gallery" label="Gallery" />
             <NavLink to="/about" label="About Nathan" />
             <a
