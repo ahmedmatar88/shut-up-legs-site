@@ -31,7 +31,7 @@
   pointer-events: none;
 }
 
-/* Enhanced content container */
+/* Enhanced content container - REMOVED glass morphism */
 .content {
   position: relative;
   z-index: 2;
@@ -41,13 +41,7 @@
   max-width: 900px;
   width: 100%;
   animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1);
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(20px);
-  border-radius: 24px;
-  border: 1px solid rgba(255, 215, 0, 0.2);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 215, 0, 0.1);
+  /* Removed: background, backdrop-filter, border, box-shadow */
   margin: 2rem 0;
 }
 
@@ -55,7 +49,6 @@
   .content {
     padding: 2rem 1.5rem;
     margin: 1rem;
-    border-radius: 20px;
   }
 }
 
@@ -85,14 +78,14 @@
   line-height: 1.6;
 }
 
-/* Enhanced route sections */
+/* Enhanced route sections - REMOVED glass morphism */
 .route {
   margin-bottom: 4rem;
   padding: 2.5rem;
-  background: rgba(255, 215, 0, 0.05);
+  background: rgba(0, 0, 0, 0.7);
   border-radius: 20px;
-  border: 1px solid rgba(255, 215, 0, 0.15);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  /* Removed: backdrop-filter */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -115,7 +108,8 @@
   box-shadow: 
     0 12px 40px rgba(0, 0, 0, 0.3),
     0 0 30px rgba(255, 215, 0, 0.15);
-  border-color: rgba(255, 215, 0, 0.3);
+  border-color: rgba(255, 215, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .route:hover::before {
@@ -254,7 +248,7 @@
   border-radius: 14px;
 }
 
-/* Enhanced route links */
+/* Enhanced route links - REMOVED glass morphism */
 .routeLinks {
   margin-top: 2rem;
   display: flex;
@@ -279,8 +273,8 @@
   padding: 0.75rem 1.5rem;
   border: 2px solid rgba(255, 215, 0, 0.3);
   border-radius: 12px;
-  background: rgba(255, 215, 0, 0.1);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.6);
+  /* Removed: backdrop-filter */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -302,7 +296,7 @@
 
 .routeLinks a:hover {
   transform: translateY(-3px);
-  background: rgba(255, 215, 0, 0.2);
+  background: rgba(0, 0, 0, 0.8);
   border-color: #FFD700;
   box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
   color: #FFF;
@@ -312,7 +306,7 @@
   left: 100%;
 }
 
-/* Enhanced button styling */
+/* Enhanced button styling - REMOVED glass morphism */
 .backButtonContainer {
   margin-top: 4rem;
   display: flex;
@@ -327,8 +321,8 @@
   padding: 1rem 2.5rem;
   border: 2px solid rgba(255, 215, 0, 0.3);
   border-radius: 12px;
-  background: rgba(255, 215, 0, 0.1);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.6);
+  /* Removed: backdrop-filter */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -352,7 +346,7 @@
 
 .button:hover {
   transform: translateY(-3px);
-  background: rgba(255, 215, 0, 0.2);
+  background: rgba(0, 0, 0, 0.8);
   border-color: #FFD700;
   box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
   color: #FFF;
@@ -370,6 +364,12 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .content {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(30px);

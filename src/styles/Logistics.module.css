@@ -31,7 +31,7 @@
   pointer-events: none;
 }
 
-/* Enhanced content container */
+/* Enhanced content container - REMOVED glass morphism */
 .content {
   position: relative;
   z-index: 2;
@@ -41,21 +41,13 @@
   max-width: 1000px;
   width: 100%;
   animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1);
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(30px);
-  border-radius: 32px;
-  border: 1px solid rgba(255, 215, 0, 0.25);
-  box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(255, 215, 0, 0.1),
-    inset 0 2px 0 rgba(255, 215, 0, 0.1);
+  /* Removed: background, backdrop-filter, border, box-shadow */
   margin: 2rem 0;
 }
 
 @media (max-width: 768px) {
   .content {
     padding: 3rem 2rem;
-    border-radius: 24px;
     margin: 1rem;
   }
 }
@@ -63,7 +55,6 @@
 @media (max-width: 480px) {
   .content {
     padding: 2.5rem 1.5rem;
-    border-radius: 20px;
   }
 }
 
@@ -108,14 +99,14 @@
   margin-bottom: 3rem;
 }
 
-/* Enhanced info sections */
+/* Enhanced info sections - REMOVED glass morphism */
 .infoSection {
   margin-bottom: 3rem;
   padding: 2.5rem;
-  background: rgba(255, 215, 0, 0.05);
+  background: rgba(0, 0, 0, 0.7);
   border-radius: 20px;
-  border: 1px solid rgba(255, 215, 0, 0.15);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  /* Removed: backdrop-filter */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -139,7 +130,8 @@
   box-shadow: 
     0 8px 30px rgba(0, 0, 0, 0.3),
     0 0 20px rgba(255, 215, 0, 0.15);
-  border-color: rgba(255, 215, 0, 0.25);
+  border-color: rgba(255, 215, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .infoSection:hover::before {
@@ -234,7 +226,7 @@
   }
 }
 
-/* Enhanced button styling */
+/* Enhanced button styling - REMOVED glass morphism */
 .backButtonContainer {
   margin-top: 4rem;
   display: flex;
@@ -249,8 +241,8 @@
   padding: 1rem 2.5rem;
   border: 2px solid rgba(255, 215, 0, 0.3);
   border-radius: 12px;
-  background: rgba(255, 215, 0, 0.1);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.6);
+  /* Removed: backdrop-filter */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -273,7 +265,7 @@
 
 .button:hover {
   transform: translateY(-3px);
-  background: rgba(255, 215, 0, 0.2);
+  background: rgba(0, 0, 0, 0.8);
   border-color: #FFD700;
   box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
   color: #FFF;
