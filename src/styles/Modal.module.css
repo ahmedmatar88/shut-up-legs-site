@@ -1,9 +1,12 @@
 .backdrop {
   position: fixed;
-  inset: 0;
+  top: 70px; /* Start below the navbar */
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(0, 0, 0, 0.8);
   /* Removed: backdrop-filter */
-  z-index: 9999; /* Much higher z-index to ensure it's above everything */
+  z-index: 1200; /* Back to reasonable z-index since we're not overlapping navbar */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,8 +14,8 @@
   overflow-y: auto;
   animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   /* Ensure modal is always visible on mobile */
-  min-height: 100vh;
-  min-height: 100dvh; /* Use dynamic viewport height for mobile */
+  min-height: calc(100vh - 70px); /* Account for navbar height */
+  min-height: calc(100dvh - 70px); /* Use dynamic viewport height for mobile */
 }
 
 .modal {
