@@ -5,7 +5,7 @@
   right: 0;
   z-index: 1100;
   background: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(10px);
+  /* Removed: backdrop-filter */
   border-bottom: 1px solid rgba(255, 215, 0, 0.3);
   display: flex;
   justify-content: space-between;
@@ -217,7 +217,7 @@
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Mobile Menu */
+/* Mobile Menu - REMOVED blur effects */
 .mobileMenu {
   position: fixed;
   top: 70px;
@@ -225,7 +225,7 @@
   width: 100vw;
   height: calc(100vh - 70px);
   background: rgba(0, 0, 0, 0.98);
-  backdrop-filter: blur(20px);
+  /* Removed: backdrop-filter */
   padding: 2rem 1rem;
   display: none;
   flex-direction: column;
@@ -285,12 +285,12 @@
   border-color: #FFD700;
 }
 
-/* Backdrop */
+/* Backdrop - REMOVED blur effect */
 .backdrop {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(4px);
+  /* Removed: backdrop-filter */
   z-index: 1000;
   animation: fadeIn 0.3s ease;
 }

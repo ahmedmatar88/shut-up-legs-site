@@ -1,4 +1,4 @@
-/* Hero section */
+/* Hero section with improved layout */
 .hero {
   position: relative;
   min-height: 100vh;
@@ -6,243 +6,377 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 70px;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 70px 1rem 2rem;
   box-sizing: border-box;
   z-index: 1;
 }
 
-/* Gradient overlay for depth - adjusted for new background method */
+/* Enhanced gradient overlay */
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(0, 0, 0, 0.3) 50%,
-    rgba(0, 0, 0, 0.6) 100%
-  );
+  background: 
+    radial-gradient(ellipse at top, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.8) 100%);
   z-index: 1;
 }
 
-/* Content container with glass morphism - FIXED hover animation */
+/* Modern content container - REMOVED glass morphism */
 .content {
   position: relative;
   z-index: 2;
   text-align: center;
   color: white;
-  padding: 3rem 2rem;
-  max-width: 900px;
+  padding: 4rem 3rem;
+  max-width: 1000px;
   width: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(20px);
-  border-radius: 24px;
-  border: 1px solid rgba(255, 215, 0, 0.2);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 215, 0, 0.1);
-  animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1);
-  /* REMOVED the problematic hover animation that was causing flashing */
+  /* Removed: background, backdrop-filter, border, box-shadow */
+  animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 3rem 2rem;
+    margin: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
   .content {
-    padding: 2rem 1.5rem;
-    margin: 1rem;
-    border-radius: 20px;
+    padding: 2.5rem 1.5rem;
   }
 }
 
-/* Logo with subtle glow - completely fixed hover effects */
+/* Enhanced logo with floating animation */
 .logo {
   width: 100%;
-  max-width: 500px;
-  margin: 0 auto 2rem;
+  max-width: 420px;
+  margin: 0 auto 3rem;
   display: block;
-  filter: drop-shadow(0 4px 12px rgba(255, 215, 0, 0.3));
-  transition: transform 0.3s ease, filter 0.3s ease;
-  will-change: auto;
-  backface-visibility: hidden;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-font-smoothing: subpixel-antialiased;
+  filter: drop-shadow(0 8px 24px rgba(255, 215, 0, 0.4));
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: logoFloat 6s ease-in-out infinite;
 }
 
 .logo:hover {
-  transform: scale(1.02) translateZ(0);
-  filter: drop-shadow(0 6px 16px rgba(255, 215, 0, 0.4));
+  transform: scale(1.05) translateY(-5px);
+  filter: drop-shadow(0 12px 32px rgba(255, 215, 0, 0.6));
 }
 
-/* Enhanced heading with gradient text - now matches About page style */
+/* Modern heading with improved typography */
 .heading {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.5rem;
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 30%, #FFD700 60%, #FFF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  line-height: 1.2;
-  margin-bottom: 2.5rem;
+  background-size: 200% 200%;
+  line-height: 1.1;
+  margin-bottom: 2rem;
   text-transform: uppercase;
-  word-break: break-word;
-  letter-spacing: 0.5px;
+  letter-spacing: 2px;
   position: relative;
+  animation: gradientShift 4s ease-in-out infinite;
 }
 
 .heading::after {
   content: '';
   position: absolute;
-  bottom: -8px;
+  bottom: -12px;
   left: 50%;
   transform: translateX(-50%);
   width: 120px;
-  height: 3px;
-  background: linear-gradient(90deg, #FFD700, #FFA500);
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #FFD700, #FFA500, #FFD700, transparent);
   border-radius: 2px;
+  animation: underlineGlow 3s ease-in-out infinite alternate;
 }
 
-@media (min-width: 768px) {
-  .heading {
-    font-size: 3.2rem;
-  }
-  
-  .heading::after {
-    width: 150px;
-  }
-}
-
-@media (max-width: 480px) {
-  .heading {
-    font-size: 2rem;
-  }
-  
-  .heading::after {
-    width: 100px;
-  }
-}
-
-/* Registration notice styling */
-.registrationNotice {
-  background: rgba(255, 215, 0, 0.1);
-  border: 1px solid rgba(255, 215, 0, 0.3);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin: 2rem 0;
-  backdrop-filter: blur(10px);
-}
-
-.registrationNotice p {
-  margin: 0;
-  font-size: 1.1rem;
+/* Elegant subtitle */
+.subtitle {
+  font-size: 1.3rem;
   line-height: 1.6;
-  color: #e8e8e8;
-  text-align: center;
-}
-
-.registrationNotice strong {
-  color: #FFD700;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 300;
+  animation: fadeIn 1.5s ease-out 0.5s both;
 }
 
 @media (max-width: 480px) {
-  .registrationNotice {
-    padding: 1.25rem;
-    margin: 1.5rem 0;
-  }
-  
-  .registrationNotice p {
-    font-size: 1rem;
+  .subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
   }
 }
 
-/* Button group with enhanced spacing */
-.buttonGroup {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+/* Prominent registration section with improved spacing */
+.registrationSection {
+  margin: 4rem 0;
+  animation: fadeIn 1.5s ease-out 0.8s both;
 }
 
-/* Enhanced buttons - now styled like course page links */
-.button {
-  font-weight: 700;
-  color: #FFD700;
-  text-decoration: none;
+.urgencyBadge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(255, 69, 0, 0.9), rgba(255, 140, 0, 0.9));
+  padding: 0.75rem 2rem;
+  border-radius: 20px;
+  margin-bottom: 3rem;
+  box-shadow: 
+    0 4px 20px rgba(255, 69, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  animation: urgencyPulse 2s ease-in-out infinite;
+}
+
+.urgencyText {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.25rem;
+}
+
+.urgencyDate {
   font-size: 1.1rem;
-  padding: 0.875rem 1.75rem;
-  border: 2px solid rgba(255, 215, 0, 0.3);
-  border-radius: 12px;
-  background: rgba(255, 215, 0, 0.1);
-  backdrop-filter: blur(10px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 700;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+}
+
+/* Hero primary button */
+.primaryButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+  color: #000;
+  text-decoration: none;
+  padding: 1.5rem 3rem;
+  border-radius: 20px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 
+    0 8px 32px rgba(255, 215, 0, 0.4),
+    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+    0 0 0 2px rgba(255, 215, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  font-family: 'Bebas Neue', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  min-width: 180px;
-  cursor: pointer;
-  display: inline-block;
-  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
-.button::before {
+.primaryButton::before {
   content: '';
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
-  transition: left 0.5s ease;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s ease;
+}
+
+.primaryButton:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 
+    0 16px 48px rgba(255, 215, 0, 0.5),
+    inset 0 2px 0 rgba(255, 255, 255, 0.4),
+    0 0 0 3px rgba(255, 215, 0, 0.5);
+  background: linear-gradient(135deg, #FFA500 0%, #FFD700 50%, #FFA500 100%);
+}
+
+.primaryButton:hover::before {
+  left: 100%;
+}
+
+.primaryButton:active {
+  transform: translateY(-2px) scale(1.01);
+}
+
+@media (max-width: 768px) {
+  .primaryButton {
+    padding: 1.25rem 2rem;
+    font-size: 1.1rem;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .primaryButton {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}
+
+.primaryButtonIcon {
+  font-size: 2rem;
+  animation: bounce 2s infinite;
+}
+
+.primaryButtonText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media (max-width: 480px) {
+  .primaryButtonText {
+    align-items: center;
+  }
+}
+
+.primaryButtonMain {
+  font-size: 1.2em;
+  line-height: 1;
+}
+
+.primaryButtonSub {
+  font-size: 0.75em;
+  opacity: 0.8;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.primaryButtonArrow {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.primaryButton:hover .primaryButtonArrow {
+  transform: translateX(5px);
+}
+
+.registrationNote {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  font-style: italic;
+}
+
+/* Secondary actions section */
+.secondaryActions {
+  margin-top: 4rem;
+  animation: fadeIn 1.5s ease-out 1.2s both;
+}
+
+.sectionTitle {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: #FFD700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #FFD700, #FFA500);
+  border-radius: 1px;
+}
+
+/* Modern button grid */
+.buttonGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .buttonGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .buttonGrid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+/* Enhanced secondary buttons - REMOVED glass morphism */
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  /* Removed: backdrop-filter */
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 16px;
+  color: #FFD700;
+  text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .button:hover {
   transform: translateY(-3px);
-  background: rgba(255, 215, 0, 0.2);
-  border-color: #FFD700;
-  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow: 
+    0 8px 24px rgba(255, 215, 0, 0.2),
+    inset 0 1px 0 rgba(255, 215, 0, 0.1);
   color: #FFF;
 }
 
 .button:hover::before {
-  left: 100%;
+  opacity: 1;
 }
 
-.button:active {
-  transform: translateY(-1px);
+.buttonIcon {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
 }
 
-/* Staggered animation for buttons - updated for 6 buttons */
-.button:nth-child(1) { animation: buttonSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both; }
-.button:nth-child(2) { animation: buttonSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both; }
-.button:nth-child(3) { animation: buttonSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both; }
-.button:nth-child(4) { animation: buttonSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.5s both; }
-.button:nth-child(5) { animation: buttonSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both; }
-.button:nth-child(6) { animation: buttonSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.7s both; }
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .buttonGroup {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .button {
-    width: 100%;
-    max-width: 280px;
-    padding: 0.875rem 1.5rem;
-    font-size: 1rem;
-  }
+.button:hover .buttonIcon {
+  transform: scale(1.1);
 }
 
-/* Animations - cleaned up */
+/* Animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px) scale(0.95);
+    transform: translateY(40px) scale(0.95);
   }
   to {
     opacity: 1;
@@ -250,7 +384,7 @@
   }
 }
 
-@keyframes buttonSlideIn {
+@keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -258,5 +392,59 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes underlineGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+  }
+}
+
+@keyframes urgencyPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 
+      0 4px 20px rgba(255, 69, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 
+      0 6px 30px rgba(255, 69, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5px);
+  }
+  60% {
+    transform: translateY(-3px);
   }
 }

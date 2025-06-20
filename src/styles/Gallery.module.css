@@ -34,21 +34,15 @@
   padding: 3rem 2rem;
   max-width: 700px;
   width: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(20px);
-  border-radius: 24px;
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  /* Removed: background, backdrop-filter, border */
   animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 215, 0, 0.1);
+  /* Removed: box-shadow */
 }
 
 @media (max-width: 480px) {
   .content {
     padding: 2rem 1.5rem;
     margin: 1rem;
-    border-radius: 20px;
   }
 }
 
@@ -74,11 +68,11 @@ p {
   font-size: 1.2rem;
   color: #e0e0e0;
   line-height: 1.6;
-  background: rgba(255, 215, 0, 0.05);
+  background: rgba(0, 0, 0, 0.6);
   padding: 1.5rem;
   border-radius: 12px;
-  border: 1px solid rgba(255, 215, 0, 0.15);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  /* Removed: backdrop-filter */
 }
 
 /* Animations */
