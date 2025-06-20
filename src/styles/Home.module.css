@@ -122,6 +122,39 @@
   }
 }
 
+/* Registration notice styling */
+.registrationNotice {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  backdrop-filter: blur(10px);
+}
+
+.registrationNotice p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #e8e8e8;
+  text-align: center;
+}
+
+.registrationNotice strong {
+  color: #FFD700;
+}
+
+@media (max-width: 480px) {
+  .registrationNotice {
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  
+  .registrationNotice p {
+    font-size: 1rem;
+  }
+}
+
 /* Button group with enhanced spacing */
 .buttonGroup {
   display: flex;
@@ -181,11 +214,13 @@
   transform: translateY(-1px);
 }
 
-/* Staggered animation for buttons */
+/* Staggered animation for buttons - updated for 6 buttons */
 .button:nth-child(1) { animation: buttonSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both; }
 .button:nth-child(2) { animation: buttonSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both; }
 .button:nth-child(3) { animation: buttonSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both; }
 .button:nth-child(4) { animation: buttonSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.5s both; }
+.button:nth-child(5) { animation: buttonSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both; }
+.button:nth-child(6) { animation: buttonSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.7s both; }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

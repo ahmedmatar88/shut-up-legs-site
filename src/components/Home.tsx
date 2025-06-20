@@ -17,9 +17,15 @@ const Home: React.FC = () => {
           6th September 2025
         </h1>
 
+        <div className={styles.registrationNotice}>
+          <p>
+            <strong>Planning to join us for the ride?</strong> Please register for the event by clicking the <strong>"Register for Event"</strong> button below. Registration will close at <strong>5pm on Sunday 31st August</strong>.
+          </p>
+        </div>
+
         <div className={styles.buttonGroup}>
           
-        <button
+          <button
             className={styles.button}
             onClick={() => window.location.href = '/about'}
           >
@@ -40,11 +46,20 @@ const Home: React.FC = () => {
             On the Day
           </button>
 
+          <a
+            className={styles.button}
+            href="https://www.britishcycling.org.uk/events/details/321588/Shut-Up-Legs---A-ride-for-Nathan-Park"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Register for Event
+          </a>
+
           <button
             className={styles.button}
             onClick={() => setShowModal(true)}
           >
-            Register Interest
+            Sign up to Newsletter
           </button>
 
           <a

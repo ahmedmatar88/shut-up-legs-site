@@ -329,8 +329,8 @@
   animation: fadeInEmbed 1.5s ease forwards;
 }
 
-/* Animations */
-@keyframes fadeIn {
+/* Responsive adjustments */
+@media (max-width: 768px) {
   from {
     opacity: 0;
     transform: translateY(30px);

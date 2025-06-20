@@ -8,7 +8,7 @@ interface Props {
 
 const SITE_KEY = '6Lf1TiUrAAAAACSQbD6ZPxqL0AJSmut74VB1AQgl';
 
-const RegisterInterestModal: React.FC<Props> = ({ onClose }) => {
+const NewsletterSignupModal: React.FC<Props> = ({ onClose }) => {
   const [formState, setFormState] = useState({ name: '', email: '', updates: false });
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,7 +36,7 @@ const RegisterInterestModal: React.FC<Props> = ({ onClose }) => {
       const json = await res.json();
       if (!res.ok) throw new Error(json?.error || "Something went wrong.");
 
-      alert("Thanks for registering!");
+      alert("Thanks for signing up to our newsletter!");
       onClose();
     } catch (err: any) {
       alert(err.message || "Something went wrong. Please try again.");
@@ -49,7 +49,7 @@ const RegisterInterestModal: React.FC<Props> = ({ onClose }) => {
     <div className={styles.backdrop}>
       <div className={styles.modal}>
         <button className={styles.close} onClick={onClose}>×</button>
-        <h2>Register Your Interest</h2>
+        <h2>Sign Up to Newsletter</h2>
         <form onSubmit={handleSubmit} className={styles.form}>
           <input
             type="text"
@@ -72,7 +72,7 @@ const RegisterInterestModal: React.FC<Props> = ({ onClose }) => {
               checked={formState.updates}
               onChange={(e) => setFormState({ ...formState, updates: e.target.checked })}
             />
-            <span>I’d like to receive updates about the event and registration details.</span>
+            <span>I'd like to receive newsletter updates about the event and future rides.</span>
           </label>
 
           <input
@@ -89,7 +89,7 @@ const RegisterInterestModal: React.FC<Props> = ({ onClose }) => {
           />
 
           <button type="submit" disabled={isSubmitting || !captchaToken}>
-            {isSubmitting ? 'Submitting...' : 'Count me in'}
+            {isSubmitting ? 'Submitting...' : 'Sign Me Up'}
           </button>
         </form>
       </div>
@@ -97,4 +97,4 @@ const RegisterInterestModal: React.FC<Props> = ({ onClose }) => {
   );
 };
 
-export default RegisterInterestModal;
+export default NewsletterSignupModal;
