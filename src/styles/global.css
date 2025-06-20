@@ -16,6 +16,8 @@ html, body, #root {
   /* Removed smooth scrolling for better performance */
   /* scroll-behavior: smooth; */
   -webkit-overflow-scrolling: touch;
+  /* Force scroll restoration to manual */
+  scroll-behavior: auto;
 }
 
 /* Fixed background using a more reliable method */
@@ -111,4 +113,14 @@ button, a, input {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Ensure pages start at top */
+body {
+  scroll-behavior: auto !important;
+}
+
+/* Reset scroll position for route changes */
+.route-wrapper {
+  scroll-margin-top: 0;
 }
