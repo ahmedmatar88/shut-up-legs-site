@@ -8,10 +8,12 @@ import Donate from './components/Donate';
 import About from './components/About';
 import Gallery from './components/Gallery';
 import MobileNavbar from './components/MobileNavbar';
+import ScrollToTop from './components/ScrollToTop';
 
 const App: React.FC = () => {
   return (
     <>
+      <ScrollToTop />
       <MobileNavbar />
       <Routes>
         <Route path="/" element={<Home />} />
