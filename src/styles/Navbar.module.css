@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1100;
+  z-index: 1000; /* Reduced from 1100 */
   background: rgba(0, 0, 0, 0.95);
   /* Removed: backdrop-filter */
   border-bottom: 1px solid rgba(255, 215, 0, 0.3);
@@ -183,7 +183,7 @@
   border: 1px solid rgba(255, 215, 0, 0.3);
   border-radius: 8px;
   cursor: pointer;
-  z-index: 2000;
+  z-index: 1001; /* Reduced from 2000 */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -229,7 +229,7 @@
   padding: 2rem 1rem;
   display: none;
   flex-direction: column;
-  z-index: 1050;
+  z-index: 1050; /* Reduced from 1050 to be consistent */
   gap: 0.5rem;
   animation: slideInFromTop 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
