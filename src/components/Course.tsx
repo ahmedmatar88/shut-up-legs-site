@@ -21,7 +21,32 @@ const Course: React.FC = () => {
       <div className={styles.overlay} />
       <div className={styles.content}>
         <h1 className={styles.heading}>Ride Routes – Shut Up LEGS</h1>
-        <p>On the day, you'll have two route options to choose from. Both rides start from <strong>Wheelbase Cycles in Staveley</strong>:</p>
+        <p>On the day, you'll have two route options to choose from. Details for both rides are below.</p>
+
+        {/* Start Location Section with Google Maps */}
+        <section className={styles.route}>
+          <h2>Start Location</h2>
+          <p><strong>Meeting Point:</strong> Wheelbase Cycles, Staveley</p>
+          <p>Both the Short Route and Long Route begin from the same location. Use the map below to find us:</p>
+          
+          {/* Google Maps Iframe */}
+          <div className={styles.mapContainer}>
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2323.853359790079!2d-2.815177!3d54.37724060000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487c92e850fe4a0f%3A0x3b7a5d69f7d09488!2sWheelbase%20Cycles!5e0!3m2!1sen!2suk!4v1750417055178!5m2!1sen!2suk" 
+              width="600" 
+              height="400" 
+              style={{ border: 0 }} 
+              allowFullScreen={true}
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Wheelbase Cycles - Route Start Location"
+            />
+          </div>
+          
+          <p style={{ marginTop: '1rem', fontSize: '0.9rem', fontStyle: 'italic', color: 'rgba(255,255,255,0.7)' }}>
+            📍 Click on the map to get directions to our starting point
+          </p>
+        </section>
 
         {/* Short Route */}
         <section className={styles.route}>
@@ -39,7 +64,7 @@ const Course: React.FC = () => {
                 data-embed-id="3341174526037101836"
                 data-style="standard"
                 data-slippy="true"
-              ></div>
+              />
             </div>
           </div>
 
@@ -69,7 +94,7 @@ const Course: React.FC = () => {
                 data-embed-id="3335363735599423332"
                 data-style="standard"
                 data-slippy="true"
-              ></div>
+              />
             </div>
           </div>
 
