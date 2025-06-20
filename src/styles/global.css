@@ -13,7 +13,8 @@ html, body, #root {
   height: 100%;
   font-family: 'Roboto', sans-serif;
   background: black;
-  scroll-behavior: smooth;
+  /* Removed smooth scrolling for better performance */
+  /* scroll-behavior: smooth; */
   -webkit-overflow-scrolling: touch;
 }
 
@@ -23,6 +24,8 @@ html, body, #root {
   background-size: cover;
   position: relative;
   min-height: 100vh;
+  /* Add will-change for better performance */
+  will-change: scroll-position;
 }
 
 /* Add overlay to #root for proper contrast */
@@ -36,12 +39,22 @@ html, body, #root {
   background: rgba(0, 0, 0, 0.3);
   z-index: -1;
   pointer-events: none;
+  /* Optimize for performance */
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 @media (max-width: 768px) {
   #root {
     background-attachment: scroll;
     background-size: cover;
+  }
+  
+  /* Improve mobile scrolling */
+  html {
+    -webkit-overflow-scrolling: touch;
+    /* Add momentum scrolling for iOS */
+    overflow-scrolling: touch;
   }
 }
 
@@ -82,4 +95,20 @@ button, a, input {
   background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
   background-size: 200px 100%;
   animation: shimmer 2s infinite;
+}
+
+/* Performance optimizations for better scrolling */
+* {
+  /* Reduce paint and layout thrashing */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Optimize animations for better performance */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
