@@ -224,6 +224,7 @@
   left: 0;
   width: 100vw;
   height: calc(100vh - 70px);
+  height: calc(100dvh - 70px);
   background: rgba(0, 0, 0, 0.98);
   /* Removed: backdrop-filter */
   padding: 2rem 1rem;
@@ -232,6 +233,9 @@
   z-index: 1050; /* Reduced from 1050 to be consistent */
   gap: 0.5rem;
   animation: slideInFromTop 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Add bottom padding for mobile scroll clearance */
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom, 1rem));
+  overflow-y: auto;
 }
 
 .mobileMenu.open {
@@ -272,6 +276,8 @@
   margin: 0.5rem 0;
   width: calc(100% - 1rem);
   text-align: center;
+  /* Add bottom margin for mobile scroll clearance */
+  margin-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
 }
 
 .mobileMenu .navLink:hover {

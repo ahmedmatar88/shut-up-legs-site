@@ -51,18 +51,22 @@
     padding: 0.5rem;
     align-items: flex-start;
     padding-top: 2rem;
+    /* Add bottom padding for mobile scroll clearance */
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 1rem));
   }
   
   .modal {
     padding: 1.5rem 1rem;
     margin: 0;
     border-radius: 16px;
-    max-height: 95vh;
-    max-height: 95dvh;
+    max-height: calc(95vh - env(safe-area-inset-bottom, 0px));
+    max-height: calc(95dvh - env(safe-area-inset-bottom, 0px));
     width: calc(100vw - 1rem);
     max-width: calc(100vw - 1rem);
     /* Ensure modal starts at reasonable position on small screens */
     margin-top: 1rem;
+    /* Add bottom margin for mobile scroll clearance */
+    margin-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
   }
 }
 
@@ -111,6 +115,15 @@
   margin-top: 1rem;
   /* Prevent form from changing height when reCAPTCHA loads */
   min-height: 400px;
+  /* Add bottom padding for mobile scroll clearance */
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+}
+
+@media (max-width: 480px) {
+  .form {
+    /* Extra bottom padding for mobile */
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 input[type="text"],
@@ -244,6 +257,15 @@ button[disabled]:hover {
   justify-content: center;
   margin: 1rem 0;
   min-height: 78px;
+  /* Add bottom margin for mobile scroll clearance */
+  margin-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+}
+
+@media (max-width: 480px) {
+  .form > div:last-of-type {
+    /* Extra bottom margin for mobile */
+    margin-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 /* Animations */
