@@ -35,6 +35,17 @@ const OnTheDay: React.FC = () => {
           <p style={{marginTop: '1rem', fontSize: '0.9rem', fontStyle: 'italic', color: 'rgba(255,255,255,0.7)'}}>
             📍 Click on the map to get directions to Wheelbase Cycles, Staveley
           </p>
+          
+          <p style={{marginTop: '1.5rem'}}>
+            <a 
+              href="https://www.wheelbase.co.uk/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{color: '#FFD700', textDecoration: 'none', fontWeight: 'bold'}}
+            >
+              Visit Wheelbase website →
+            </a>
+          </p>
         </section>
 
         <section className={styles.infoSection}>
@@ -53,6 +64,48 @@ const OnTheDay: React.FC = () => {
           <p>
             There is a feed station at <strong>Finsthwait Village Hall</strong> for those riding the Long Route 
             and a smaller feed station at <strong>St Cuthberts Church</strong> for those riding the Short Route.
+          </p>
+        </section>
+
+        <section className={styles.infoSection}>
+          <h2>After the Ride - Drinks & Social</h2>
+          <p>
+            After completing your ride, join us at <strong>Indie Craft Beer</strong> from <strong>4pm onwards</strong> for drinks 
+            and a chance to catch up with fellow riders. Share your stories from the ride, raise a glass to Nathan's memory, 
+            and enjoy some well-deserved refreshments in great company.
+          </p>
+          
+          <p style={{marginTop: '1.5rem', marginBottom: '1rem'}}>
+            <strong>Location:</strong> Indie Craft Beer, Kendal
+          </p>
+          
+          {/* Indie Craft Beer Google Maps Iframe */}
+          <div className={styles.mapContainer}>
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2326.6395675669555!2d-2.748375186712691!3d54.32800310070746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487c8de7056c160b%3A0x68d04d165533ae3!2sIndie%20Craft%20Beer!5e0!3m2!1sen!2suk!4v1751141092298!5m2!1sen!2suk" 
+              width="600" 
+              height="450" 
+              style={{border: 0}} 
+              allowFullScreen
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Indie Craft Beer - After Ride Meetup Location"
+            />
+          </div>
+          
+          <p style={{marginTop: '1rem', fontSize: '0.9rem', fontStyle: 'italic', color: 'rgba(255,255,255,0.7)'}}>
+            📍 Click on the map to get directions to Indie Craft Beer
+          </p>
+          
+          <p style={{marginTop: '1.5rem'}}>
+            <a 
+              href="https://www.indiecraftbeer.co.uk" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{color: '#FFD700', textDecoration: 'none', fontWeight: 'bold'}}
+            >
+              Visit Indie Craft Beer's website →
+            </a>
           </p>
         </section>
 
