@@ -4,46 +4,98 @@
   box-sizing: border-box;
 }
 
-html, body, #root {
+/* CRITICAL: Single scroll container setup */
+html {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  max-width: 100vw;
   height: 100%;
-  font-family: 'Roboto', sans-serif;
-  background: black;
-  /* CRITICAL: Completely disable smooth scrolling and scroll restoration */
-  scroll-behavior: auto !important;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Aggressive scroll restoration prevention */
-html {
+  /* Remove conflicting scroll behaviors */
   scroll-behavior: auto !important;
   scroll-restoration: manual !important;
+  /* Prevent overscroll bounce on mobile */
+  overscroll-behavior: none;
+  /* Single scroll container */
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  background: black;
+  /* CRITICAL: Remove scroll from body */
+  overflow: hidden !important;
+  /* Prevent scroll restoration */
   scroll-behavior: auto !important;
-  scroll-snap-type: none !important;
-  /* Prevent any scroll memory */
+  -webkit-overflow-scrolling: touch;
+  /* Prevent overscroll bounce */
   overscroll-behavior: none;
 }
 
-/* Fixed background using a more reliable method */
+/* CRITICAL: #root as the main scroll container */
 #root {
+  /* Use consistent height without dvh conflicts */
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
+  
+  /* Background setup */
   background: url('/rocacorba.jpeg') no-repeat center center fixed;
   background-size: cover;
   position: relative;
-  min-height: 100vh;
-  /* Remove properties that can interfere with scrolling */
+  
+  /* CRITICAL: Single scroll container */
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  
+  /* Remove properties that interfere with scrolling */
   scroll-behavior: auto !important;
-  /* Prevent scroll anchoring */
   overflow-anchor: none;
+  
+  /* Ensure proper stacking */
+  width: 100vw;
+  max-width: 100vw;
 }
 
-/* Add overlay to #root for proper contrast */
+/* Mobile-specific fixes */
+@media (max-width: 768px) {
+  html {
+    /* Ensure single scroll container on mobile */
+    overflow: hidden;
+  }
+  
+  body {
+    /* Prevent any body scrolling on mobile */
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+  
+  #root {
+    /* Background attachment scroll for mobile performance */
+    background-attachment: scroll;
+    background-size: cover;
+    
+    /* CRITICAL: Ensure #root handles all scrolling on mobile */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    
+    /* Mobile scroll optimizations */
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+}
+
+/* Overlay positioning fix */
 #root::before {
   content: '';
   position: fixed;
@@ -56,18 +108,6 @@ body {
   pointer-events: none;
   will-change: transform;
   transform: translateZ(0);
-}
-
-@media (max-width: 768px) {
-  #root {
-    background-attachment: scroll;
-    background-size: cover;
-  }
-  
-  html, body {
-    -webkit-overflow-scrolling: touch;
-    overflow-scrolling: touch;
-  }
 }
 
 /* Smooth transitions for all interactive elements */
@@ -122,6 +162,8 @@ main {
   position: relative;
   /* Prevent scroll anchoring */
   overflow-anchor: none;
+  /* Ensure main doesn't create scroll container */
+  overflow: visible;
 }
 
 /* Performance optimizations for better scrolling */

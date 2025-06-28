@@ -1,6 +1,7 @@
 .hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -12,6 +13,8 @@
   padding-right: 1rem;
   box-sizing: border-box;
   z-index: 1;
+  /* CRITICAL: Don't create scroll container */
+  overflow: visible;
 }
 
 /* Enhanced overlay with gradient */
@@ -43,18 +46,29 @@
   animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1);
   /* Removed: background, backdrop-filter, border, box-shadow */
   margin: 2rem 0;
+  /* Add bottom padding for mobile scroll clearance */
+  padding-bottom: calc(4rem + env(safe-area-inset-bottom, 2rem));
 }
 
 @media (max-width: 768px) {
+  .hero {
+    /* Add bottom padding to prevent content cutoff */
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 1rem));
+  }
+  
   .content {
     padding: 3rem 2rem;
     margin: 1rem;
+    /* Extra bottom padding for mobile */
+    padding-bottom: calc(4rem + env(safe-area-inset-bottom, 2rem));
   }
 }
 
 @media (max-width: 480px) {
   .content {
     padding: 2.5rem 1.5rem;
+    /* Extra bottom padding for mobile */
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom, 2rem));
   }
 }
 
@@ -145,6 +159,17 @@
   }
 }
 
+/* Last info section gets extra bottom margin for mobile */
+.infoSection:last-of-type {
+  margin-bottom: 5rem;
+}
+
+@media (max-width: 768px) {
+  .infoSection:last-of-type {
+    margin-bottom: 6rem;
+  }
+}
+
 .infoSection h2 {
   font-size: 2.2rem;
   margin-bottom: 1.5rem;
@@ -231,6 +256,15 @@
   margin-top: 4rem;
   display: flex;
   justify-content: center;
+  /* Add extra bottom margin for mobile scroll clearance */
+  margin-bottom: 4rem;
+}
+
+@media (max-width: 768px) {
+  .backButtonContainer {
+    /* Extra bottom margin for mobile */
+    margin-bottom: 6rem;
+  }
 }
 
 .button {
