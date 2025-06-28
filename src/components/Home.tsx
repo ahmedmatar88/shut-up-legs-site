@@ -14,7 +14,7 @@ const Home: React.FC = () => {
         {/* Deadline notice at the top */}
         <div className={styles.urgencyBadge}>
           <span className={styles.urgencyText}>Registration Deadline</span>
-          <span className={styles.urgencyDate}>Sunday 31st August • 5pm</span>
+          <span className={styles.urgencyDate}>Saturday 30th August • Midnight</span>
         </div>
 
         <h1 className={styles.heading}>

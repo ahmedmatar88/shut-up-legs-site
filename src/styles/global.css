@@ -13,11 +13,22 @@ html, body, #root {
   height: 100%;
   font-family: 'Roboto', sans-serif;
   background: black;
-  /* Removed smooth scrolling for better performance */
-  /* scroll-behavior: smooth; */
+  /* CRITICAL: Completely disable smooth scrolling and scroll restoration */
+  scroll-behavior: auto !important;
   -webkit-overflow-scrolling: touch;
-  /* Force scroll restoration to manual */
-  scroll-behavior: auto;
+}
+
+/* Aggressive scroll restoration prevention */
+html {
+  scroll-behavior: auto !important;
+  scroll-restoration: manual !important;
+}
+
+body {
+  scroll-behavior: auto !important;
+  scroll-snap-type: none !important;
+  /* Prevent any scroll memory */
+  overscroll-behavior: none;
 }
 
 /* Fixed background using a more reliable method */
@@ -26,8 +37,10 @@ html, body, #root {
   background-size: cover;
   position: relative;
   min-height: 100vh;
-  /* Add will-change for better performance */
-  will-change: scroll-position;
+  /* Remove properties that can interfere with scrolling */
+  scroll-behavior: auto !important;
+  /* Prevent scroll anchoring */
+  overflow-anchor: none;
 }
 
 /* Add overlay to #root for proper contrast */
@@ -41,7 +54,6 @@ html, body, #root {
   background: rgba(0, 0, 0, 0.3);
   z-index: -1;
   pointer-events: none;
-  /* Optimize for performance */
   will-change: transform;
   transform: translateZ(0);
 }
@@ -52,10 +64,8 @@ html, body, #root {
     background-size: cover;
   }
   
-  /* Improve mobile scrolling */
-  html {
+  html, body {
     -webkit-overflow-scrolling: touch;
-    /* Add momentum scrolling for iOS */
     overflow-scrolling: touch;
   }
 }
@@ -99,9 +109,23 @@ button, a, input {
   animation: shimmer 2s infinite;
 }
 
+/* CRITICAL: Force scroll behavior on all elements */
+*, *::before, *::after {
+  scroll-behavior: auto !important;
+  /* Prevent scroll anchoring on all elements */
+  overflow-anchor: none !important;
+}
+
+/* Ensure main elements don't interfere with scrolling */
+main {
+  scroll-behavior: auto !important;
+  position: relative;
+  /* Prevent scroll anchoring */
+  overflow-anchor: none;
+}
+
 /* Performance optimizations for better scrolling */
 * {
-  /* Reduce paint and layout thrashing */
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
@@ -112,15 +136,18 @@ button, a, input {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-/* Ensure pages start at top */
-body {
+/* Prevent any scroll memory or restoration */
+.react-router-scroll-top {
   scroll-behavior: auto !important;
 }
 
-/* Reset scroll position for route changes */
-.route-wrapper {
-  scroll-margin-top: 0;
+/* Force scroll position reset on route change */
+.route-container {
+  scroll-margin-top: 0 !important;
+  scroll-behavior: auto !important;
+  overflow-anchor: none !important;
 }
