@@ -1,0 +1,129 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 70px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+  z-index: 1;
+  /* CRITICAL: Don't create scroll container */
+  overflow: visible;
+  /* Add bottom padding for mobile scroll clearance */
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom, 1rem));
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 3rem 2rem;
+  max-width: 700px;
+  width: 100%;
+  /* Removed: background, backdrop-filter, border */
+  animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Removed: box-shadow */
+  /* Add bottom padding for mobile scroll clearance */
+  padding-bottom: calc(3rem + env(safe-area-inset-bottom, 2rem));
+}
+
+@media (max-width: 768px) {
+  .hero {
+    /* Add extra bottom padding to prevent content cutoff */
+    padding-bottom: calc(3rem + env(safe-area-inset-bottom, 1rem));
+  }
+  
+  .content {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+    /* Extra bottom padding for mobile */
+    padding-bottom: calc(4rem + env(safe-area-inset-bottom, 2rem));
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+    /* Extra bottom padding for mobile */
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom, 2rem));
+  }
+}
+
+.heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.8rem;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 2.2rem;
+  }
+}
+
+p {
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  line-height: 1.6;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  /* Removed: backdrop-filter */
+  /* Add bottom margin for mobile scroll clearance */
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  p {
+    /* Extra bottom margin for mobile */
+    margin-bottom: 3rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 165, 0, 0.3);
+  }
+}

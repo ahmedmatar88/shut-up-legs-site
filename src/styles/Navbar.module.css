@@ -1,0 +1,353 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Reduced from 1100 */
+  background: rgba(0, 0, 0, 0.95);
+  /* Removed: backdrop-filter */
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  box-sizing: border-box;
+  padding-inline: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), transparent);
+  pointer-events: none;
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navLogo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #FFD700;
+  font-weight: bold;
+  font-size: 1.25rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.navLogo:hover {
+  background: rgba(255, 215, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.navLogo img {
+  height: 40px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navLogo:hover img {
+  transform: rotate(5deg) scale(1.05);
+}
+
+/* Desktop Nav Links */
+.navLinks {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.navLink {
+  color: #FFD700;
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  position: relative;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.navLink::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), transparent);
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #FFD700, #FFA500);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+  border-radius: 1px;
+}
+
+.navLink:hover {
+  transform: translateY(-1px);
+  text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+}
+
+.navLink:hover::before,
+.navLink.active::before {
+  opacity: 1;
+}
+
+.navLink:hover::after,
+.navLink.active::after {
+  width: 80%;
+}
+
+/* Special styling for the Register button */
+.registerButton {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: #000 !important;
+  font-family: 'Bebas Neue', sans-serif;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+  border: 2px solid transparent;
+}
+
+.registerButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.registerButton:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+  background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.registerButton:hover::before {
+  left: 100%;
+}
+
+.registerButton:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Hamburger Toggle Button */
+.menuToggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1001; /* Reduced from 2000 */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menuToggle:hover {
+  background: rgba(255, 215, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.menuToggle .bar {
+  width: 20px;
+  height: 2px;
+  background: #FFD700;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2px;
+}
+
+.menuToggle.open {
+  background: rgba(255, 215, 0, 0.2);
+}
+
+.menuToggle.open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menuToggle.open .bar:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.menuToggle.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile Menu - REMOVED blur effects */
+.mobileMenu {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 70px);
+  height: calc(100dvh - 70px);
+  background: rgba(0, 0, 0, 0.98);
+  /* Removed: backdrop-filter */
+  padding: 2rem 1rem;
+  display: none;
+  flex-direction: column;
+  z-index: 1050; /* Reduced from 1050 to be consistent */
+  gap: 0.5rem;
+  animation: slideInFromTop 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Add bottom padding for mobile scroll clearance */
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom, 1rem));
+  overflow-y: auto;
+}
+
+.mobileMenu.open {
+  display: flex;
+}
+
+.mobileMenu .navLink {
+  font-size: 1.2rem;
+  padding: 1rem 1.5rem;
+  margin: 0.25rem 0;
+  border-radius: 12px;
+  background: rgba(255, 215, 0, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-20px);
+  opacity: 0;
+  animation: slideInItem 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mobileMenu .navLink:nth-child(1) { animation-delay: 0.1s; }
+.mobileMenu .navLink:nth-child(2) { animation-delay: 0.15s; }
+.mobileMenu .navLink:nth-child(3) { animation-delay: 0.2s; }
+.mobileMenu .navLink:nth-child(4) { animation-delay: 0.25s; }
+.mobileMenu .navLink:nth-child(5) { animation-delay: 0.3s; }
+.mobileMenu .navLink:nth-child(6) { animation-delay: 0.35s; }
+
+.mobileMenu .registerButton { 
+  animation-delay: 0.4s; 
+  animation: slideInItem 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+  transform: translateX(-20px);
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  margin: 0.5rem 0;
+  width: calc(100% - 1rem);
+  text-align: center;
+  /* Add bottom margin for mobile scroll clearance */
+  margin-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+}
+
+.mobileMenu .navLink:hover {
+  background: rgba(255, 215, 0, 0.15);
+  border-color: rgba(255, 215, 0, 0.3);
+  transform: translateX(5px);
+}
+
+.mobileMenu .navLink.active {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: #FFD700;
+}
+
+/* Backdrop - REMOVED blur effect */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  /* Removed: backdrop-filter */
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
+
+  .menuToggle {
+    display: flex;
+  }
+
+  .desktopOnly {
+    display: none !important;
+  }
+
+  .registerButton {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    margin: 0.5rem 0;
+    width: calc(100% - 1rem);
+    text-align: center;
+  }
+}
+
+.desktopOnly {
+  display: flex;
+}
+
+/* Animations */
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInItem {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
