@@ -44,9 +44,15 @@ const Home: React.FC = () => {
             <span className={styles.primaryButtonArrow}>→</span>
           </a>
           
-          <p className={styles.registrationNote}>
-            Secure your place for this special memorial ride
-          </p>
+          <div className={styles.registrationNote}>
+            <p className={styles.registrationText}>
+              Secure your place for this special memorial ride
+              <br />
+              <span className={styles.pricingText}>Event Cost: £32.50 + £1.00 application fee</span>
+              <br />
+              <span className={styles.accountRequirement}>British Cycling account required (free registration if you don't have one)</span>
+            </p>
+          </div>
         </div>
 
         {/* Secondary Actions */}

@@ -478,3 +478,19 @@
     transform: translateY(-3px);
   }
 }
+
+.registrationText {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.pricingText {
+  font-weight: bold;
+  color: #FFD700;
+  font-size: 1.1rem;
+}
+
+.accountRequirement {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
