@@ -1,12 +1,12 @@
 .backdrop {
   position: fixed;
-  top: 70px; /* Start below the navbar */
+  top: 0; /* Start from very top instead of below navbar */
   left: 0;
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.8);
   /* Removed: backdrop-filter */
-  z-index: 1200; /* Back to reasonable z-index since we're not overlapping navbar */
+  z-index: 1200; /* Higher than footer and navbar */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,8 +14,8 @@
   overflow-y: auto;
   animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   /* Ensure modal is always visible on mobile */
-  min-height: calc(100vh - 70px); /* Account for navbar height */
-  min-height: calc(100dvh - 70px); /* Use dynamic viewport height for mobile */
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .modal {
@@ -50,23 +50,23 @@
   .backdrop {
     padding: 0.5rem;
     align-items: flex-start;
-    padding-top: 2rem;
-    /* Add bottom padding for mobile scroll clearance */
-    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 1rem));
+    padding-top: 1rem; /* Reduced top padding */
+    /* Ensure modal has space and isn't cut off by footer */
+    padding-bottom: 1rem;
   }
   
   .modal {
     padding: 1.5rem 1rem;
     margin: 0;
     border-radius: 16px;
-    max-height: calc(95vh - env(safe-area-inset-bottom, 0px));
-    max-height: calc(95dvh - env(safe-area-inset-bottom, 0px));
+    /* Ensure modal fits within viewport minus padding */
+    max-height: calc(100vh - 2rem);
+    max-height: calc(100dvh - 2rem);
     width: calc(100vw - 1rem);
     max-width: calc(100vw - 1rem);
-    /* Ensure modal starts at reasonable position on small screens */
-    margin-top: 1rem;
-    /* Add bottom margin for mobile scroll clearance */
-    margin-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    /* Remove margins that might interfere */
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -113,16 +113,18 @@
   flex-direction: column;
   gap: 1.5rem;
   margin-top: 1rem;
-  /* Prevent form from changing height when reCAPTCHA loads */
-  min-height: 400px;
-  /* Add bottom padding for mobile scroll clearance */
-  padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  /* Reduce min-height for mobile */
+  min-height: 300px;
+  /* Remove bottom padding that was causing issues */
+  padding-bottom: 0;
 }
 
 @media (max-width: 480px) {
   .form {
-    /* Extra bottom padding for mobile */
-    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+    gap: 1rem;
+    min-height: 250px;
+    /* Remove all bottom padding for mobile */
+    padding-bottom: 0;
   }
 }
 
@@ -247,7 +249,7 @@ button[disabled]:hover {
 .form > div:has(iframe[src*="recaptcha"]) {
   display: flex;
   justify-content: center;
-  margin: 1rem 0;
+  margin: 1rem 0 0.5rem 0; /* Reduced bottom margin */
   min-height: 78px; /* Reserve space to prevent layout shifts */
 }
 
@@ -255,16 +257,18 @@ button[disabled]:hover {
 .form > div:last-of-type {
   display: flex;
   justify-content: center;
-  margin: 1rem 0;
+  margin: 1rem 0 0.5rem 0; /* Reduced bottom margin */
   min-height: 78px;
-  /* Add bottom margin for mobile scroll clearance */
-  margin-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
 }
 
 @media (max-width: 480px) {
   .form > div:last-of-type {
-    /* Extra bottom margin for mobile */
-    margin-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+    /* Minimal bottom margin for mobile */
+    margin-bottom: 0.5rem;
+  }
+  
+  .form > div:has(iframe[src*="recaptcha"]) {
+    margin-bottom: 0.5rem;
   }
 }
 
