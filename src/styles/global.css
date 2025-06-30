@@ -89,13 +89,13 @@ body {
     height: 100vh;
     height: 100dvh;
     
-    /* Mobile scroll optimizations */
+    /* Mobile scroll optimisations */
     -webkit-overflow-scrolling: touch;
     overflow-scrolling: touch;
   }
 }
 
-/* Overlay positioning fix */
+/* Overlay positioning fix - extend just to where footer starts */
 #root::before {
   content: '';
   position: fixed;
@@ -149,7 +149,7 @@ button, a, input {
   animation: shimmer 2s infinite;
 }
 
-/* CRITICAL: Force scroll behavior on all elements */
+/* CRITICAL: Force scroll behaviour on all elements */
 *, *::before, *::after {
   scroll-behavior: auto !important;
   /* Prevent scroll anchoring on all elements */
@@ -164,15 +164,16 @@ main {
   overflow-anchor: none;
   /* Ensure main doesn't create scroll container */
   overflow: visible;
+  /* Remove flex properties that were causing issues */
 }
 
-/* Performance optimizations for better scrolling */
+/* Performance optimisations for better scrolling */
 * {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
 
-/* Optimize animations for better performance */
+/* Optimise animations for better performance */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
