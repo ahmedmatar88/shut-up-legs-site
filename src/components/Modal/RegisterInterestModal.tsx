@@ -13,13 +13,14 @@ const NewsletterSignupModal: React.FC<Props> = ({ onClose }) => {
     name: '', 
     email: '', 
     updates: false,
-    privacy: false 
+    privacy: false  // This field was missing proper handling
   });
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
     if (!captchaToken) {
       alert("Please complete the reCAPTCHA.");
       return;
@@ -40,6 +41,7 @@ const NewsletterSignupModal: React.FC<Props> = ({ onClose }) => {
           name: formState.name,
           email: formState.email,
           updates: formState.updates,
+          privacy: formState.privacy, // Make sure this is included
           "g-recaptcha-response": captchaToken,
           website: ''
         })
@@ -80,7 +82,6 @@ const NewsletterSignupModal: React.FC<Props> = ({ onClose }) => {
           <label className={styles.checkboxLabel}>
             <input
               type="checkbox"
-              required
               checked={formState.updates}
               onChange={(e) => setFormState({ ...formState, updates: e.target.checked })}
             />
