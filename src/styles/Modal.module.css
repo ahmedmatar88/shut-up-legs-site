@@ -1,32 +1,33 @@
 .backdrop {
   position: fixed;
-  top: 70px; /* Start below the navbar */
+  top: 70px; /* Start below navbar to avoid covering it */
   left: 0;
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.8);
   /* Removed: backdrop-filter */
-  z-index: 1200; /* Back to reasonable z-index since we're not overlapping navbar */
+  z-index: 1200; /* Higher than footer and navbar */
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Align to top for better mobile experience */
   justify-content: center;
   padding: 1rem;
   overflow-y: auto;
   animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  /* Ensure modal is always visible on mobile */
-  min-height: calc(100vh - 70px); /* Account for navbar height */
-  min-height: calc(100dvh - 70px); /* Use dynamic viewport height for mobile */
+  /* Calculate available height minus navbar */
+  min-height: calc(100vh - 70px);
+  min-height: calc(100dvh - 70px);
 }
 
 .modal {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 240, 240, 0.95) 100%);
   /* Removed: backdrop-filter */
-  padding: 2rem 1.5rem;
+  padding: 1.5rem 1rem; /* Reduced padding for mobile */
   border-radius: 20px;
   width: 100%;
   max-width: 420px;
-  max-height: 90vh;
-  max-height: 90dvh; /* Use dynamic viewport height */
+  /* Make modal more compact for mobile */
+  max-height: calc(100vh - 140px); /* Account for navbar + some margin */
+  max-height: calc(100dvh - 140px);
   overflow-y: auto;
   box-shadow: 
     0 20px 60px rgba(0, 0, 0, 0.3),
@@ -39,46 +40,40 @@
   /* Fixed positioning to prevent shifting */
   margin: auto;
   transform: none !important;
-  /* Ensure modal doesn't go off-screen */
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto;
 }
 
 @media (max-width: 480px) {
   .backdrop {
     padding: 0.5rem;
     align-items: flex-start;
-    padding-top: 2rem;
-    /* Add bottom padding for mobile scroll clearance */
-    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 1rem));
+    padding-top: 0.5rem; /* Minimal top padding */
+    padding-bottom: 0.5rem; /* Minimal bottom padding */
   }
   
   .modal {
-    padding: 1.5rem 1rem;
+    padding: 1.25rem 1rem; /* More compact padding */
     margin: 0;
     border-radius: 16px;
-    max-height: calc(95vh - env(safe-area-inset-bottom, 0px));
-    max-height: calc(95dvh - env(safe-area-inset-bottom, 0px));
+    /* Ensure modal fits within available space below navbar */
+    max-height: calc(100vh - 90px);
+    max-height: calc(100dvh - 90px);
     width: calc(100vw - 1rem);
     max-width: calc(100vw - 1rem);
-    /* Ensure modal starts at reasonable position on small screens */
-    margin-top: 1rem;
-    /* Add bottom margin for mobile scroll clearance */
-    margin-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    /* Remove margins that might interfere */
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 
 .modal h2 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 2rem;
+  font-size: 1.8rem; /* Reduced from 2rem */
   text-transform: uppercase;
   background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem; /* Reduced from 2rem */
   text-align: center;
   letter-spacing: 1px;
 }
@@ -111,24 +106,27 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 1rem;
-  /* Prevent form from changing height when reCAPTCHA loads */
-  min-height: 400px;
-  /* Add bottom padding for mobile scroll clearance */
-  padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  gap: 1rem; /* Reduced from 1.5rem */
+  margin-top: 0.5rem; /* Reduced from 1rem */
+  /* Much smaller min-height for mobile */
+  min-height: 200px;
+  /* Remove bottom padding that was causing issues */
+  padding-bottom: 0;
 }
 
 @media (max-width: 480px) {
   .form {
-    /* Extra bottom padding for mobile */
-    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+    gap: 0.75rem; /* Even smaller gap on mobile */
+    min-height: 150px; /* Very compact for mobile */
+    /* Remove all bottom padding for mobile */
+    padding-bottom: 0;
+    margin-top: 0;
   }
 }
 
 input[type="text"],
 input[type="email"] {
-  padding: 1rem 1.25rem;
+  padding: 0.875rem 1rem; /* Reduced padding */
   border-radius: 12px;
   border: 2px solid rgba(255, 215, 0, 0.3);
   font-size: 1rem;
@@ -208,11 +206,11 @@ button[type="submit"]:active {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  margin-top: 1rem;
-  font-size: 0.95rem;
-  line-height: 1.4;
+  margin-top: 0.5rem; /* Reduced from 1rem */
+  font-size: 0.9rem; /* Slightly smaller text */
+  line-height: 1.3; /* Tighter line height */
   color: #444;
-  padding: 1rem;
+  padding: 0.75rem; /* Reduced padding */
   background: rgba(255, 215, 0, 0.05);
   border-radius: 10px;
   border: 1px solid rgba(255, 215, 0, 0.15);
@@ -247,7 +245,7 @@ button[disabled]:hover {
 .form > div:has(iframe[src*="recaptcha"]) {
   display: flex;
   justify-content: center;
-  margin: 1rem 0;
+  margin: 1rem 0 0.5rem 0; /* Reduced bottom margin */
   min-height: 78px; /* Reserve space to prevent layout shifts */
 }
 
@@ -255,16 +253,18 @@ button[disabled]:hover {
 .form > div:last-of-type {
   display: flex;
   justify-content: center;
-  margin: 1rem 0;
+  margin: 1rem 0 0.5rem 0; /* Reduced bottom margin */
   min-height: 78px;
-  /* Add bottom margin for mobile scroll clearance */
-  margin-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
 }
 
 @media (max-width: 480px) {
   .form > div:last-of-type {
-    /* Extra bottom margin for mobile */
-    margin-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+    /* Minimal bottom margin for mobile */
+    margin-bottom: 0.5rem;
+  }
+  
+  .form > div:has(iframe[src*="recaptcha"]) {
+    margin-bottom: 0.5rem;
   }
 }
 

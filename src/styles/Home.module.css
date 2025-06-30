@@ -1,26 +1,24 @@
 /* Hero section with improved layout - FIXED */
 .hero {
   position: relative;
-  min-height: 100vh;
-  min-height: 100dvh; /* Use dynamic viewport height for mobile */
+  min-height: calc(100vh - 70px); /* Account for navbar */
+  min-height: calc(100dvh - 70px); /* Use dynamic viewport height for mobile */
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 70px 1rem 2rem;
+  padding: 70px 1rem 2rem; /* Restore bottom padding */
   box-sizing: border-box;
   z-index: 1;
   /* CRITICAL: Don't create scroll container */
   overflow: visible;
 }
 
-/* Enhanced gradient overlay */
+/* Enhanced gradient overlay - SIMPLIFIED to match footer */
 .overlay {
   position: absolute;
   inset: 0;
-  background: 
-    radial-gradient(ellipse at top, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.8) 100%);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 1;
 }
 
@@ -30,7 +28,7 @@
   z-index: 2;
   text-align: center;
   color: white;
-  padding: 4rem 3rem;
+  padding: 4rem 3rem 2rem; /* Reduce bottom padding to minimize gap */
   max-width: 1000px;
   width: 100%;
   /* Removed: background, backdrop-filter, border, box-shadow */
@@ -40,25 +38,25 @@
 @media (max-width: 768px) {
   .hero {
     /* Ensure proper height calculation on mobile */
-    min-height: calc(100vh - env(safe-area-inset-bottom));
-    min-height: calc(100dvh - env(safe-area-inset-bottom));
-    /* Add bottom padding to prevent content cutoff */
-    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 1rem));
+    min-height: calc(100vh - 70px - env(safe-area-inset-bottom));
+    min-height: calc(100dvh - 70px - env(safe-area-inset-bottom));
+    /* Reduce bottom padding */
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0.5rem));
   }
   
   .content {
-    padding: 3rem 2rem;
+    padding: 3rem 2rem 1rem; /* Reduce bottom padding */
     margin: 1rem;
-    /* Add bottom margin for mobile scroll clearance */
-    margin-bottom: 2rem;
+    /* Remove bottom margin */
+    margin-bottom: 0;
   }
 }
 
 @media (max-width: 480px) {
   .content {
-    padding: 2.5rem 1.5rem;
-    /* Additional bottom margin for very small screens */
-    margin-bottom: 3rem;
+    padding: 2.5rem 1.5rem 1rem; /* Reduce bottom padding */
+    /* Remove bottom margin */
+    margin-bottom: 0;
   }
 }
 
@@ -284,14 +282,16 @@
 .secondaryActions {
   margin-top: 4rem;
   animation: fadeIn 1.5s ease-out 1.2s both;
-  /* Add bottom padding for mobile scroll clearance */
-  padding-bottom: 2rem;
+  /* Remove ALL bottom spacing */
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 @media (max-width: 768px) {
   .secondaryActions {
-    /* Extra padding for mobile */
-    padding-bottom: 3rem;
+    /* Remove ALL bottom spacing on mobile too */
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 }
 
@@ -324,16 +324,16 @@
   gap: 1.5rem;
   max-width: 800px;
   margin: 0 auto;
-  /* Add bottom margin for mobile scroll clearance */
-  margin-bottom: 2rem;
+  /* Remove bottom margin - let footer handle spacing */
+  margin-bottom: 0;
 }
 
 @media (max-width: 768px) {
   .buttonGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    /* Extra bottom margin for mobile */
-    margin-bottom: 3rem;
+    /* Remove extra bottom margin */
+    margin-bottom: 0;
   }
 }
 
@@ -341,8 +341,8 @@
   .buttonGrid {
     grid-template-columns: 1fr;
     gap: 0.75rem;
-    /* Extra bottom margin for mobile */
-    margin-bottom: 4rem;
+    /* Remove extra bottom margin */
+    margin-bottom: 0;
   }
 }
 

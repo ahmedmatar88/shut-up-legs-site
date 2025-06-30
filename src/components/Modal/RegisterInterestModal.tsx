@@ -9,7 +9,12 @@ interface Props {
 const SITE_KEY = '6Lf1TiUrAAAAACSQbD6ZPxqL0AJSmut74VB1AQgl';
 
 const NewsletterSignupModal: React.FC<Props> = ({ onClose }) => {
-  const [formState, setFormState] = useState({ name: '', email: '', updates: false });
+  const [formState, setFormState] = useState({ 
+    name: '', 
+    email: '', 
+    updates: false,
+    privacy: false 
+  });
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -20,6 +25,11 @@ const NewsletterSignupModal: React.FC<Props> = ({ onClose }) => {
       return;
     }
 
+    if (!formState.privacy) {
+      alert("Please accept our privacy policy to continue.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -27,7 +37,9 @@ const NewsletterSignupModal: React.FC<Props> = ({ onClose }) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...formState,
+          name: formState.name,
+          email: formState.email,
+          updates: formState.updates,
           "g-recaptcha-response": captchaToken,
           website: ''
         })
@@ -75,6 +87,22 @@ const NewsletterSignupModal: React.FC<Props> = ({ onClose }) => {
             <span>I'd like to receive newsletter updates about the event and future rides.</span>
           </label>
 
+          <label className={styles.checkboxLabel}>
+            <input
+              type="checkbox"
+              required
+              checked={formState.privacy}
+              onChange={(e) => setFormState({ ...formState, privacy: e.target.checked })}
+            />
+            <span>
+              I have read and agree to the{' '}
+              <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" style={{color: '#FFD700'}}>
+                Privacy Policy
+              </a>
+              {' '}and consent to my data being processed as described.
+            </span>
+          </label>
+
           <input
             type="text"
             name="website"
@@ -88,7 +116,7 @@ const NewsletterSignupModal: React.FC<Props> = ({ onClose }) => {
             onChange={setCaptchaToken}
           />
 
-          <button type="submit" disabled={isSubmitting || !captchaToken}>
+          <button type="submit" disabled={isSubmitting || !captchaToken || !formState.privacy}>
             {isSubmitting ? 'Submitting...' : 'Sign Me Up'}
           </button>
         </form>
