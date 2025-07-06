@@ -68,6 +68,33 @@ const OnTheDay: React.FC = () => {
         </section>
 
         <section className={styles.infoSection}>
+          <h2>Rider Information & Safety</h2>
+          
+          <h3 style={{color: '#FFD700', fontSize: '1.4rem', marginTop: '1.5rem', marginBottom: '1rem'}}>Safety Requirements</h3>
+          <p>
+            <strong style={{color: '#FFD700'}}>Cycling helmets must be worn</strong> during the event by all participants.
+          </p>
+          
+          <p>
+            The routes take place on <strong>open public roads</strong>. All riders must obey the usual rules of the road. 
+            Some of the roads are narrow, so please be respectful of other road users. We ask that you do not ride in 
+            large groups that will hinder other road users.
+          </p>
+          
+          <h3 style={{color: '#FFD700', fontSize: '1.4rem', marginTop: '1.5rem', marginBottom: '1rem'}}>Emergency Procedures</h3>
+          <p>
+            If there is an incident on your route, please <strong>call the emergency services first</strong> if they are required. 
+            If possible, please call one of our emergency numbers (these will be given to you at registration) and we will 
+            assist if possible.
+          </p>
+          
+          <p>
+            If you aren't able to finish the route and return home without coming back to Wheelbase, 
+            <strong style={{color: '#FFD700'}}> please let us know</strong> so we don't send out the search and rescue party to find you!
+          </p>
+        </section>
+
+        <section className={styles.infoSection}>
           <h2>After the Ride - Drinks & Social</h2>
           <p>
             After completing your ride, join us at <strong>Indie Craft Beer</strong> from <strong>4pm onwards</strong> for drinks 
