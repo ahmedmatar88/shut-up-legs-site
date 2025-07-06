@@ -1,79 +1,58 @@
 .backdrop {
-  position: fixed;
-  top: 70px; /* Start below navbar to avoid covering it */
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  /* Removed: backdrop-filter */
-  z-index: 1200; /* Higher than footer and navbar */
-  display: flex;
-  align-items: flex-start; /* Align to top for better mobile experience */
-  justify-content: center;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(0, 0, 0, 0.85) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   padding: 1rem;
-  overflow-y: auto;
-  animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  /* Calculate available height minus navbar */
-  min-height: calc(100vh - 70px);
-  min-height: calc(100dvh - 70px);
+  animation: fadeIn 0.3s ease;
+  /* No z-index needed - portal renders outside DOM hierarchy */
 }
 
 .modal {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 240, 240, 0.95) 100%);
-  /* Removed: backdrop-filter */
-  padding: 1.5rem 1rem; /* Reduced padding for mobile */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 240, 240, 0.98) 100%);
+  padding: 1.5rem 1rem;
   border-radius: 20px;
   width: 100%;
   max-width: 420px;
-  /* Make modal more compact for mobile */
-  max-height: calc(100vh - 140px); /* Account for navbar + some margin */
-  max-height: calc(100dvh - 140px);
+  max-height: 90vh;
   overflow-y: auto;
   box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(255, 215, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    0 25px 80px rgba(0, 0, 0, 0.6),
+    0 0 0 3px rgba(255, 215, 0, 0.6);
   color: #1a1a1a;
   position: relative;
   animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 2px solid rgba(255, 215, 0, 0.3);
-  /* Fixed positioning to prevent shifting */
-  margin: auto;
-  transform: none !important;
+  border: 3px solid #FFD700;
 }
 
 @media (max-width: 480px) {
   .backdrop {
     padding: 0.5rem;
-    align-items: flex-start;
-    padding-top: 0.5rem; /* Minimal top padding */
-    padding-bottom: 0.5rem; /* Minimal bottom padding */
   }
   
   .modal {
-    padding: 1.25rem 1rem; /* More compact padding */
-    margin: 0;
+    padding: 1.25rem 1rem;
     border-radius: 16px;
-    /* Ensure modal fits within available space below navbar */
-    max-height: calc(100vh - 90px);
-    max-height: calc(100dvh - 90px);
+    max-height: 85vh;
     width: calc(100vw - 1rem);
     max-width: calc(100vw - 1rem);
-    /* Remove margins that might interfere */
-    margin-top: 0;
-    margin-bottom: 0;
   }
 }
 
 .modal h2 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.8rem; /* Reduced from 2rem */
+  font-size: 1.8rem;
   text-transform: uppercase;
   background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 1.5rem; /* Reduced from 2rem */
+  margin-bottom: 1.5rem;
   text-align: center;
   letter-spacing: 1px;
 }
@@ -82,8 +61,8 @@
   position: absolute;
   top: 1rem;
   right: 1.5rem;
-  background: rgba(255, 215, 0, 0.1);
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  background: rgba(255, 215, 0, 0.2);
+  border: 2px solid #FFD700;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -92,57 +71,49 @@
   justify-content: center;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #666;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #333;
+  transition: all 0.3s ease;
 }
 
 .close:hover {
-  background: rgba(255, 215, 0, 0.2);
-  border-color: #FFD700;
-  color: #333;
+  background: rgba(255, 215, 0, 0.4);
+  border-color: #FFA500;
+  color: #000;
   transform: scale(1.1) rotate(90deg);
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Reduced from 1.5rem */
-  margin-top: 0.5rem; /* Reduced from 1rem */
-  /* Much smaller min-height for mobile */
-  min-height: 200px;
-  /* Remove bottom padding that was causing issues */
-  padding-bottom: 0;
+  gap: 1rem;
+  margin-top: 0.5rem;
 }
 
 @media (max-width: 480px) {
   .form {
-    gap: 0.75rem; /* Even smaller gap on mobile */
-    min-height: 150px; /* Very compact for mobile */
-    /* Remove all bottom padding for mobile */
-    padding-bottom: 0;
-    margin-top: 0;
+    gap: 0.75rem;
   }
 }
 
 input[type="text"],
 input[type="email"] {
-  padding: 0.875rem 1rem; /* Reduced padding */
+  padding: 0.875rem 1rem;
   border-radius: 12px;
   border: 2px solid rgba(255, 215, 0, 0.3);
   font-size: 1rem;
   width: 100%;
-  background: rgba(255, 255, 255, 0.8);
-  /* Removed: backdrop-filter */
+  background: rgba(255, 255, 255, 0.9);
   color: #1a1a1a;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
   font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
 }
 
 input[type="text"]:focus,
 input[type="email"]:focus {
   outline: none;
   border-color: #FFD700;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 1);
   box-shadow: 
     0 0 0 3px rgba(255, 215, 0, 0.2),
     0 4px 12px rgba(0, 0, 0, 0.1);
@@ -156,17 +127,13 @@ input[type="email"]::placeholder {
 
 button[type="submit"] {
   font-weight: 700;
-  color: #FFD700;
-  text-decoration: none;
+  color: #000;
   font-size: 1.1rem;
   padding: 1rem 2rem;
-  border: 2px solid rgba(255, 215, 0, 0.3);
+  border: 2px solid #FFD700;
   border-radius: 12px;
-  background: rgba(255, 215, 0, 0.1);
-  /* Removed: backdrop-filter */
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  transition: all 0.3s ease;
   font-family: 'Bebas Neue', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -175,27 +142,11 @@ button[type="submit"] {
   text-align: center;
 }
 
-button[type="submit"]::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
-  transition: left 0.5s ease;
-}
-
 button[type="submit"]:hover {
-  background: rgba(255, 215, 0, 0.2);
-  border-color: #FFD700;
-  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
-  color: #FFF;
+  background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
+  border-color: #FFA500;
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
   transform: translateY(-2px);
-}
-
-button[type="submit"]:hover::before {
-  left: 100%;
 }
 
 button[type="submit"]:active {
@@ -206,20 +157,19 @@ button[type="submit"]:active {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  margin-top: 0.5rem; /* Reduced from 1rem */
-  font-size: 0.9rem; /* Slightly smaller text */
-  line-height: 1.3; /* Tighter line height */
+  font-size: 0.9rem;
+  line-height: 1.3;
   color: #444;
-  padding: 0.75rem; /* Reduced padding */
-  background: rgba(255, 215, 0, 0.05);
+  padding: 0.75rem;
+  background: rgba(255, 215, 0, 0.1);
   border-radius: 10px;
-  border: 1px solid rgba(255, 215, 0, 0.15);
+  border: 1px solid rgba(255, 215, 0, 0.3);
   transition: all 0.3s ease;
 }
 
 .checkboxLabel:hover {
-  background: rgba(255, 215, 0, 0.1);
-  border-color: rgba(255, 215, 0, 0.25);
+  background: rgba(255, 215, 0, 0.15);
+  border-color: rgba(255, 215, 0, 0.5);
 }
 
 .checkboxLabel input[type="checkbox"] {
@@ -228,6 +178,7 @@ button[type="submit"]:active {
   margin: 0;
   accent-color: #FFD700;
   transform: scale(1.2);
+  flex-shrink: 0;
 }
 
 button[disabled] {
@@ -239,33 +190,21 @@ button[disabled] {
 
 button[disabled]:hover {
   box-shadow: none;
+  transform: none !important;
 }
 
-/* reCAPTCHA container styling - FIXED positioning */
+/* reCAPTCHA container */
 .form > div:has(iframe[src*="recaptcha"]) {
   display: flex;
   justify-content: center;
-  margin: 1rem 0 0.5rem 0; /* Reduced bottom margin */
-  min-height: 78px; /* Reserve space to prevent layout shifts */
+  margin: 1rem 0;
 }
 
-/* Fallback for browsers that don't support :has() */
+/* Fallback for browsers without :has() support */
 .form > div:last-of-type {
   display: flex;
   justify-content: center;
-  margin: 1rem 0 0.5rem 0; /* Reduced bottom margin */
-  min-height: 78px;
-}
-
-@media (max-width: 480px) {
-  .form > div:last-of-type {
-    /* Minimal bottom margin for mobile */
-    margin-bottom: 0.5rem;
-  }
-  
-  .form > div:has(iframe[src*="recaptcha"]) {
-    margin-bottom: 0.5rem;
-  }
+  margin: 1rem 0;
 }
 
 /* Animations */

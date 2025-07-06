@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 import styles from '../../styles/Modal.module.css';
 
@@ -13,10 +14,40 @@ const NewsletterSignupModal: React.FC<Props> = ({ onClose }) => {
     name: '', 
     email: '', 
     updates: false,
-    privacy: false  // This field was missing proper handling
+    privacy: false
   });
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [modalRoot, setModalRoot] = useState<HTMLElement | null>(null);
+
+  // Create portal target and handle cleanup
+  useEffect(() => {
+    // Create a div to render the modal into
+    const modalDiv = document.createElement('div');
+    modalDiv.id = 'modal-root';
+    modalDiv.style.position = 'fixed';
+    modalDiv.style.top = '0';
+    modalDiv.style.left = '0';
+    modalDiv.style.width = '100%';
+    modalDiv.style.height = '100%';
+    modalDiv.style.zIndex = '999999';
+    modalDiv.style.pointerEvents = 'none'; // Let backdrop handle pointer events
+    
+    // Append to body
+    document.body.appendChild(modalDiv);
+    setModalRoot(modalDiv);
+
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = 'hidden';
+
+    // Cleanup function
+    return () => {
+      if (document.body.contains(modalDiv)) {
+        document.body.removeChild(modalDiv);
+      }
+      document.body.style.overflow = '';
+    };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,7 +72,7 @@ const NewsletterSignupModal: React.FC<Props> = ({ onClose }) => {
           name: formState.name,
           email: formState.email,
           updates: formState.updates,
-          privacy: formState.privacy, // Make sure this is included
+          privacy: formState.privacy,
           "g-recaptcha-response": captchaToken,
           website: ''
         })
@@ -59,8 +90,11 @@ const NewsletterSignupModal: React.FC<Props> = ({ onClose }) => {
     }
   };
 
-  return (
-    <div className={styles.backdrop}>
+  // Don't render until we have a modal root
+  if (!modalRoot) return null;
+
+  const modalContent = (
+    <div className={styles.backdrop} style={{ pointerEvents: 'auto' }}>
       <div className={styles.modal}>
         <button className={styles.close} onClick={onClose}>×</button>
         <h2>Sign Up to Newsletter</h2>
@@ -124,6 +158,9 @@ const NewsletterSignupModal: React.FC<Props> = ({ onClose }) => {
       </div>
     </div>
   );
+
+  // Use ReactDOM.createPortal to render outside the component tree
+  return ReactDOM.createPortal(modalContent, modalRoot);
 };
 
 export default NewsletterSignupModal;
