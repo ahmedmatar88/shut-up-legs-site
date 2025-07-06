@@ -266,8 +266,86 @@
 .mobileMenu .navLink:nth-child(5) { animation-delay: 0.3s; }
 .mobileMenu .navLink:nth-child(6) { animation-delay: 0.35s; }
 
+.mobileMenu .navLink:hover {
+  background: rgba(255, 215, 0, 0.15);
+  border-color: rgba(255, 215, 0, 0.3);
+  transform: translateX(5px);
+}
+
+.mobileMenu .navLink.active {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: #FFD700;
+}
+
+/* Mobile Social Media Section */
+.mobileSocialSection {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(255, 215, 0, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  animation: slideInItem 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.45s;
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.mobileSocialTitle {
+  font-family: 'Bebas Neue', sans-serif;
+  color: #FFD700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.75rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.mobileSocialLinks {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mobileSocialLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #FFD700;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  min-width: 120px;
+  justify-content: center;
+}
+
+.mobileSocialLink:hover {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: rgba(255, 215, 0, 0.5);
+  transform: translateY(-2px);
+  color: #FFF;
+}
+
+.mobileSocialLink svg {
+  transition: transform 0.3s ease;
+}
+
+.mobileSocialLink:hover svg {
+  transform: scale(1.1);
+}
+
+/* Update the register button animation delay to account for social section */
 .mobileMenu .registerButton { 
-  animation-delay: 0.4s; 
+  animation-delay: 0.5s; 
   animation: slideInItem 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   opacity: 0;
   transform: translateX(-20px);
@@ -278,17 +356,6 @@
   text-align: center;
   /* Add bottom margin for mobile scroll clearance */
   margin-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
-}
-
-.mobileMenu .navLink:hover {
-  background: rgba(255, 215, 0, 0.15);
-  border-color: rgba(255, 215, 0, 0.3);
-  transform: translateX(5px);
-}
-
-.mobileMenu .navLink.active {
-  background: rgba(255, 215, 0, 0.2);
-  border-color: #FFD700;
 }
 
 /* Backdrop - REMOVED blur effect */
