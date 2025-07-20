@@ -28,7 +28,7 @@ const slides = [
   { src: '/gallery/photo15.jpeg' },
   { src: '/gallery/photo16.jpeg' },
   { src: '/gallery/photo17.jpeg' },
-  { src: '/gallery/photo18.jpeg' },
+  { src: '/gallery/photo23.jpeg' },
   { src: '/gallery/photo19.jpeg' },
   { src: '/gallery/photo20.jpeg' },
   { src: '/gallery/photo21.jpeg' },
